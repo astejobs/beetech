@@ -1,0 +1,43 @@
+<div class="product-card">
+  <a [routerLink]="['/products', product.id]">
+    <div class="product-image">
+      <div class="img-container" > <!--  -->
+        <img [src]="product.images[product.productImages[0].valueOf()] | safe:'resourceUrl'" class="img-fluid img-zoom">
+        <!-- <div class="overlay">
+          <div class="text">
+            <button mat-raised-button class="btn-shop sm-100">
+              <mat-icon>shop</mat-icon>
+              Buy Now
+          </button>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </a>
+    <div class="product-details">
+      <div class="flip-box-inner">
+        <div class="flip-box-front">
+          <div class="product-name">
+            {{product?.name}}
+          </div>
+          <div class="product-price">
+            {{product?.price | currency:'INR'}}
+          </div>
+          <div class="product-discount">
+            Discount
+              <span>({{product?.discount}}%)</span>
+          </div>
+          <div class="product-description">
+            {{product?.description}}
+          </div>
+        </div>
+        <div class="flip-box-back">
+          <button mat-raised-button class="btn-shop sm-100" (click)="addToCart(product)">
+              <mat-icon>add_shopping_cart</mat-icon>
+              Add To Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  <div style="clear: both;" ></div>
+</div>

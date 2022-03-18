@@ -1,0 +1,39 @@
+<!-- <div class="app-container"> -->
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav role="navigation" mode="over"  [opened]="showSidenav" class="bg-light">
+      <!--this is a place for us to add side-nav code-->
+      <div class="jumbotron">
+        <img src="../../assets/images//logo_btech.png" class="img-fluid" alt="" srcset="">
+      </div>
+        <div class="sidenav-link">
+          <a mat-button routerLink="/">Home</a>
+          <a mat-button routerLink="/products">Shop</a>
+          <a mat-button routerLink="/login">login</a>
+          <a mat-button (click)="logout()">Log Out</a>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content appScroll [scrollClass]="'app-navbar-bg'">
+      <!--in here all the content must reside. We will add a navigation header as well-->
+      <mat-toolbar class="position-fixed app-navbar-Nobg">
+        <div class="d-md-none d-sm-block">
+          <button mat-icon-button class="toggle-icon" (click)="sidenav.toggle()" >
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <div class="img-responsive">
+          <img src="assets/images/logo_btech.png" height="40px">
+        </div>
+        <!-- <a mat-button class="companyName" routerLink="/">
+          <span>Site name</span>
+        </a> -->
+        <span class="example-spacer"></span>
+        <app-navbar (toggle)="toggleSidenav($event)"></app-navbar>
+        </mat-toolbar>
+     <div class="">
+       <router-outlet></router-outlet>
+       <app-footer></app-footer>
+     </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+<!-- </div> -->

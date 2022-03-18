@@ -1,0 +1,140 @@
+<div class="container mt-100 mb-5">
+  <div class="row ">
+    <div class="col-sm-5">
+      <div class="row" >
+        <div class="col-sm-12 p-2">
+          <lib-ngx-image-zoom class="img-fluid zoom-component"
+            [thumbImage]=selectedImage
+            [fullImage]=selectedImage
+            [magnification]="2"
+            [enableScrollZoom]="true"
+            [enableLens]="false"
+            [lensWidth]="200"
+            ></lib-ngx-image-zoom>
+            <!-- [lensHeight]="100" -->
+        <!-- [circularLens]="true" -->
+           <!--   <img [src]="selectedImage" alt="" srcset=""> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="table-responsive">
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <td *ngFor="let iName of product?.productImages" class="col-25">
+                  <div class="img-container" (click)="onSelectImage(product.images[iName])">
+                    <img [src]="product.images[iName] | safe:'resourceUrl'" class="img-fluid img-thumbnail">
+                    <div class="overlay">
+                      <div class="text"></div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7">
+        <div class="product-detail-container">
+          <h3 class="display-6">{{product?.name}}</h3>
+          <div class="short-description">
+           <span>100% Pure Honey</span>
+          </div>
+          <div class="product-ratings">
+            <!-- <div class="ml-md-5 text-muted comments">
+              <mat-icon>comment</mat-icon>Comments
+            </div> -->
+            <mat-icon>star_rate</mat-icon>
+            <mat-icon>star_rate</mat-icon>
+            <mat-icon>star_rate</mat-icon>
+            <mat-icon>star_rate</mat-icon>
+            <mat-icon>star_half</mat-icon>
+          </div>
+          <div class="product-price">
+            <label>Price:</label> <span>{{product?.price | currency:"INR":"symbol"}}</span>
+          </div>
+          <div class="product-discount">
+            <label>Package Discount:</label>
+            <span>
+              {{ (product?.discount)/100 | percent:'1.2'}}
+              <small>
+                <span class="ml-3 original-price">{{product?.price | currency:"INR":"symbol"}}</span>
+               (
+                  You only pay
+                  <b>
+                    {{(product?.price) - (((product?.price)/100)*(product?.discount)) | currency :"INR":"symbol" }}
+                  </b>
+                )
+              </small>
+            </span>
+          </div>
+          <mat-divider></mat-divider>
+         <br>
+          <div class="product-weight">
+            <label>Weight:</label> <span>{{product?.weight}}</span>
+          </div>
+          <div class="product-flavour">
+            <label>Flavour:</label> <span>{{product?.flavour}}</span>
+          </div>
+
+          <div class="product-package">
+            <label>Package Information:</label> <span>{{product?.packageInfo}}</span>
+          </div>
+          <div class="product-brand">
+            <label>Brand:</label> <span>{{product?.brand}}</span>
+          </div>
+
+          <br>
+          <div class="product-about">
+            <label>About This Product: </label>
+            <br>
+            <span>{{product?.aboutProduct}}</span>
+          </div>
+
+          <br>
+          <mat-divider></mat-divider>
+          <br>
+
+          <div class="row">
+              <div class="col-sm-12">
+                  <div class="form-group">
+                    <button mat-raised-button class="btn-cart sm-100" (click)="addToCart(product)">
+                        <mat-icon>add_shopping_cart</mat-icon>
+                        Add To Cart
+                    </button>
+                    <span class="">
+                      Quantity 1
+                    </span>
+                  </div>
+              </div>
+            <div class="col-sm-12">
+              <div class="form-group float-right">
+                <button mat-raised-button color="warn" class="mr-3 sm-100" [routerLink]="['/cart']">
+                    <mat-icon>shopping_cart</mat-icon>
+                    View Cart
+                </button>
+                <button mat-raised-button color="accent" class="sm-100" [routerLink]="['/products']">
+                  <mat-icon>store</mat-icon>
+                  Continue Shopping
+                </button>
+          </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+
+      <mat-divider></mat-divider>
+      <br>
+
+      <div class="product-description">
+        <label>Product Description </label>
+        <br>
+        <span>{{product?.description}}</span>
+      </div>
+    </div>
+  </div>
+</div>

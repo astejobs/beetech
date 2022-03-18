@@ -1,0 +1,80 @@
+.position-fixed{
+  position: fixed
+}
+app-body {
+  overflow: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 64px;
+}
+
+.app-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.companyName{
+  font-size: 150%;
+}
+
+.toggle-icon{
+  font-size: 110%;
+  min-width: min-content;
+}
+::ng-deep .mat-toolbar{
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.app-navbar-Nobg {
+  background: transparent !important;
+  color: #fff
+}
+.app-navbar-bg {
+  /* background: #e9ecef !important; */
+  color: #888 !important;
+  /* background: #EBA937 !important; */
+  background: url("../../assets/images/header-bg.png"), linear-gradient(rgb(255, 255, 255,0), rgb(255, 255, 255,0));
+  /* background: linear-gradient(rgb(236, 194, 7), rgba(218, 233, 11, 0.836)), url("../../assets/images/header-bg.png"); */
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+main {
+  padding: 10px;
+}
+
+div {
+  overflow: inherit;
+}
+
+.sidenav-link a{
+  text-decoration: none;
+  font-size: 110%;
+  white-space: normal;
+  display: block;
+}
+
+/* .mat-sidenav-content{
+    font-size: 200%;
+    text-align: left;
+} */

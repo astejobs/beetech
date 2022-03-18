@@ -1,0 +1,130 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12"> <!-- offset-md-1 -->
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)" class="form-horizontal">
+                <!-- Form Name -->
+                <h4>PRODUCTS</h4>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <input type="hidden" name="id" formControlName="id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.id.errors }" placeholder="Product Id">
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="control-label" for="product_name">PRODUCT NAME</label>
+                  <input name="name" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Product Name" type="text">
+                  <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Product Name is required</div>
+                  </div>
+                </div>
+
+                <!-- Select Basic -->
+                <div formGroupName="category">
+                  <div class="form-group">
+                    <label class=" control-label" for="product_categorie">PRODUCT CATEGORY</label>
+                      <select name="category" formControlName="id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
+                        <option value="" disabled>Choose Category</option>
+                        <option *ngFor="let category of categories" [ngValue]="category.id"> {{category.name}}</option>
+                      </select>
+                  </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class="control-label" for="product_description">PRODUCT DESCRIPTION</label>
+                    <textarea id="description" name="description" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+
+                </div>
+
+                <!-- list of Units -->
+                <div formArrayName="unit">
+                  <label class="control-label">PRODUCT UNITS</label>
+                  <div *ngFor="let unit of productForm.get('unit')['controls']; let i = index;" class="mat-elevation-z1 mb-3 p-3">
+                        <!-- unit header, show remove button when more than one unit available -->
+                        <div>
+                            <span>Unit {{i + 1}}</span>
+                            <button mat-mini-fab color="warn" *ngIf="productForm.get('unit').length > 1"
+                                (click)="removeUnit(i)" class="float-right"><mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+
+                        <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+                        <div [formGroupName]="i" class="row">
+                          <input type="hidden" formControlName="id">
+                            <!-- type -->
+                            <div class="col-sm-6">
+                              <div class="form-group">
+                                  <input type="text" formControlName="type" class="form-control" placeholder="Type" >
+                                  <!-- display error message if street is not valid -->
+                                  <small [hidden]="productForm.controls.unit.controls[i].controls.type.valid">
+                                      Type is required
+                                  </small>
+                              </div>
+                              <!-- value -->
+                              <div class="form-group">
+                                  <input type="text" formControlName="value" class="form-control" placeholder="Value">
+                                  <!-- display error message if street is not valid -->
+                                  <small [hidden]="productForm.controls.unit.controls[i].controls.value.valid">
+                                      Value is required
+                                  </small>
+                              </div>
+                            </div>
+                            <div class="col-sm-6">
+                              <!-- type -->
+                              <div class="form-group">
+                                  <input type="text" formControlName="price" class="form-control" placeholder="Price">
+                                  <!-- display error message if street is not valid -->
+                                  <small [hidden]="productForm.controls.unit.controls[i].controls.price.valid">
+                                      Price is required
+                                  </small>
+                              </div>
+                              <!-- Value -->
+                              <div class="form-group">
+                                  <input type="text" formControlName="discount" class="form-control" placeholder="Discount">
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <button mat-raised-button color="accent" class="float-right mb-3" type="button" (click)="addUnit()"><mat-icon>add_box</mat-icon></button>
+
+                <!-- File Button -->
+                <label for="">UPLOAD IMAGES</label>
+
+                <div class="form-group">
+                  <input id="file" type="file" class="form-control-file" multiple=""
+                    (change)="onFileChange($event)" accept="image/*">
+                  <!-- <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                    <div *ngIf="f.file.errors && f.file.errors.required">File is required.</div>
+                  </div> -->
+                </div>
+
+                <div class="preview-wrapper row">
+                  <div class="img-preview col-sm-4" *ngFor='let url of images'>
+                    <img [src]="url" class="w-100">
+                    <button type="button" mat-mini-fab color="warn" (click)="removeImage(url)"><mat-icon>delete</mat-icon></button>
+                  </div>
+                </div>
+
+
+
+                <!-- Button -->
+                <div class="form-group"> <!-- [disabled]="!productForm.valid" -->
+                    <button class="btn btn-dark btn-block" type="submit">
+                      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                      Add Product
+                    </button>
+                </div>
+
+                <img [src]="imageToShow"
+     alt="Place image title"
+     *ngIf="!isImageLoading; else noImageFound">
+<ng-template #noImageFound>
+     <img src="fallbackImage.png" alt="Fallbackimage">
+</ng-template>
+        </form>
+
+    </div>
+  </div>
+</div>

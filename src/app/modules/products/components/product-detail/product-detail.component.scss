@@ -1,0 +1,155 @@
+
+.mt-100 {
+  margin-top: 100px !important;
+}
+.zoom-component {
+  width:100% !important;
+}
+::ng-deep .ngxImageZoomContainer {
+  width: 100% !important;
+  height: auto;
+}
+::ng-deep .ngxImageZoomimg-container {
+  width: 100% !important;
+  /* height: 100% !important; */
+}
+::ng-deep .ngxImageZoomThumbnail {
+  width: 100%;
+}
+
+@media (min-width: 559px) {
+
+  .img-container {
+    position: relative;
+  }
+
+  .image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.3rem;
+    box-shadow: 0 6px 10px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .2s ease;
+    background-color: #cbce96c9;
+  }
+
+  .img-container:hover .overlay {
+    opacity: 1;
+  }
+
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
+.col-25 {
+  width: 25%;
+}
+
+.product-detail-container {
+  font-weight: 400;
+  font-family: Montserrat;
+}
+
+.product-detail-container h3{
+  font-family: Montserrat;
+  font-weight: 700;
+  color: #c29006;
+  text-transform: uppercase;
+}
+.product-detail-container label{
+  font-weight: bolder;
+  margin-right: 30px;
+}
+.product-ratings {
+  font-size: x-large;
+  color: #ffee06;
+  margin-bottom: 20px;
+}
+/* .product-ratings .comments{
+  font-size: xx-small;
+  vertical-align: middle;
+} */
+/* .product-ratings mat-icon{
+  font-size: xx-small;
+  display: inline;
+} */
+
+.product-price span{
+ color: #ee6340;
+ font-weight: bolder;
+}
+.product-discount span{
+ color: #188602;
+ font-weight: bolder;
+}
+
+.product-discount .original-price{
+ color: #ee6340;
+ text-decoration: line-through;
+}
+.short-description label{
+  font-weight: bolder;
+}
+.short-description span{
+  font-weight: bold;
+}
+/* .product-weight label{
+
+}
+.product-weight {
+
+}
+
+.product-package {
+
+}
+
+.product-brand {
+
+}
+
+.product-about {
+
+} */
+.product-description label{
+  text-transform: uppercase;
+}
+.product-description span{
+  color: #666;
+}
+
+.btn-cart {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 35px;
+  padding-right: 35px;
+  background-color: rgb(14, 133, 10);
+  color: #ffffff;
+}
+@media  (max-width: 559px) {
+  .sm-100 {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+}
+

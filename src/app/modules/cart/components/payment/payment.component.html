@@ -1,0 +1,81 @@
+<div class="form-group">
+  <!-- Default inline 1-->
+  <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" [value]="isPayOnline" class="custom-control-input" id="defaultInline1" name="payMode" (click)="payOnline()">
+    <label class="custom-control-label" for="defaultInline1">Pay Online</label>
+  </div>
+
+  <!-- Default inline 2-->
+  <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" [value]="isCOD" class="custom-control-input" id="defaultInline2" name="payMode" (click)="payOffline()">
+    <label class="custom-control-label" for="defaultInline2">Cash On Delivery</label>
+  </div>
+</div>
+<button (click)="isCOD= !isCOD">Cash On Delivery</button>
+<div *ngIf="isCOD">
+  <p class="lead">Cash On Delivery Selected</p>
+</div>
+<div class="container-fluid" *ngIf="!isCOD">
+  <button type="submit"  class="btn btn-success btn-block" (click)="pay()">
+    <mat-icon>shopping_cart_checkout</mat-icon>
+    Make Payment Online
+  </button>
+
+  <!-- <h4 class="form-group">Payment</h4>
+
+  <div class="d-block my-3">
+    <div class="custom-control custom-radio">
+      <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+      <label class="custom-control-label" for="credit">Credit card</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+      <label class="custom-control-label" for="debit">Debit card</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+      <label class="custom-control-label" for="paypal">Paypal</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 form-group">
+      <label for="cc-name">Name on card</label>
+      <input type="text" class="form-control" id="cc-name" placeholder="" required>
+      <small class="text-muted">Full name as displayed on card</small>
+      <div class="invalid-feedback">
+        Name on card is required
+      </div>
+    </div>
+    <div class="col-md-6 form-group">
+      <label for="cc-number">Credit card number</label>
+      <input type="text" class="form-control" id="cc-number" placeholder="" required>
+      <div class="invalid-feedback">
+        Credit card number is required
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 form-group">
+      <label for="cc-expiration">Expiration</label>
+      <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+      <div class="invalid-feedback">
+        Expiration date required
+      </div>
+    </div>
+    <div class="col-md-3 form-group">
+      <label for="cc-expiration">CVV</label>
+      <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+      <div class="invalid-feedback">
+        Security code required
+      </div>
+    </div>
+  </div> -->
+
+</div>
+
+<!-- <button type="submit"  class="btn btn-success btn-block" (click)="onPlaceOrder()">
+  <mat-icon>shopping_cart_checkout</mat-icon>
+  Place Order
+</button> -->
+
+

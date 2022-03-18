@@ -1,0 +1,108 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h4 class="mb-3">Shipping Address</h4>
+
+    <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+
+        <input type="hidden" formControlName="id" class="form-control">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><mat-icon>user</mat-icon></span>
+            </div>
+            <input type="text" formControlName="name" class="form-control" id="name" placeholder="Person name" required>
+            <div class="invalid-feedback">
+              Name is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="firstName">Phone Number</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><mat-icon>phone_enabled</mat-icon></span>
+            </div>
+            <input type="text" formControlName="phoneNumber" class="form-control" id="phoneNumber" placeholder="Enter Contact No" required>
+            <div class="invalid-feedback">
+              Valid Contact is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Address</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><mat-icon>place</mat-icon></span>
+            </div>
+            <input type="textarea" formControlName="address" class="form-control" placeholder="Enter address line 1" value="" required>
+            <div class="invalid-feedback">
+              Valid Address is required.
+            </div>
+          </div>
+        </div>
+
+      <div class="form-group">
+        <label for="username">Landmark</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><mat-icon>flag</mat-icon></span>
+          </div>
+          <input type="text" formControlName="landmark" class="form-control" placeholder="Enter address line 2" required>
+          <div class="invalid-feedback" style="width: 100%;">
+            Your lm is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Pin Code <span class="text-danger">*</span></label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><mat-icon>pin</mat-icon></span>
+          </div>
+          <input type="email" formControlName="pincode" class="form-control" id="mail" placeholder="Pincode">
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
+        </div>
+      </div>
+
+     <!--  <div  class="jumbotron">
+        <span *ngFor="let address of addresses" (click)="useAddress(address)" class="address-box">
+          {{address.address}} {{address.pincode}} <hr>
+        </span>
+      </div> -->
+      <label id="example-radio-group-label">Choose Address</label>
+      <mat-radio-group>
+        <div *ngFor="let address of addresses" class="my-2">
+          <mat-radio-button color="warn" [value]="address" (click)="useAddress(address)">
+            <strong>{{address.name}}</strong>
+          </mat-radio-button>
+          <br>
+          <span class="address-box pl-3">
+            {{address.address}} <br>
+            {{address.pincode}} <br>
+            {{address?.landmark}} <br>
+            {{address?.phoneNumber}}<br>
+          </span>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-radio-group>
+     <!--  <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+        <mat-chip *ngFor="let address of addresses" (click)="useAddress(address)">
+          {{address.address}} {{address.pincode}}
+        </mat-chip>
+      </mat-chip-list> -->
+
+
+      <hr class="mb-4">
+      <button type="submit" mat-raised-button color="warn" class="btn-block">
+        <mat-icon>shopping_cart_checkout</mat-icon>
+        Continue To Checkout
+      </button>
+    </form>
+
+  </div>
+
+</div>

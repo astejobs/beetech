@@ -1,0 +1,151 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/aos/src/sass/aos.scss';
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Coda+Caption:wght@800&family=Lato&family=Montserrat:wght@400;600&family=Notable&family=Roboto+Mono&family=Roboto:wght@500&family=Source+Code+Pro:wght@400;500&display=swap');
+
+/* for sidenav to take a whole page */
+html, body {
+  margin: 0;
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #fff;
+}
+@media (min-width: 1200px) {
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
+      max-width: 1300px;
+  }
+}
+
+.app-navbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active
+{
+    outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+}
+select:focus {
+  box-shadow: none !important;
+}
+input[type="search"]:focus {
+  outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+ }
+
+.jkts-input {
+  border: 1px solid #ebebeb !important;
+  border-radius: 0px;
+  height: 50px;
+  color: #adb89c !important;
+  font-weight: 300;
+}
+
+input[type="text"]::placeholder { /* Most modern browsers support this now. */
+ color:    #a7a2a2;
+ font-size: small;
+}
+input[type="search"]::placeholder { /* Most modern browsers support this now. */
+ color:    #a7a2a2;
+ font-size: small;
+}
+input[type="textarea"]::placeholder { /* Most modern browsers support this now. */
+ color:    #a7a2a2;
+ font-size: small;
+}
+
+.jkts-select {
+  border: 1px solid #ebebeb !important;
+  border-radius: 0px;
+  height: 50px;
+}
+
+.jkts-btn {
+  border: 1px solid #ebebeb;
+  border-radius: 0px;
+  background-color: #EBA937;
+  color: #fdfdfd;
+}
+.owl-theme .owl-nav {
+  top: 40%;
+  position: absolute;
+  width: 100%;
+}
+.owl-nav .owl-prev {
+  position: absolute;
+  left:0;
+}
+.owl-nav .owl-next {
+  position: absolute;
+  right: 0;
+}
+.owl-theme .owl-nav [class*=owl-] {
+  background: transparent;
+  font-size: 33px;
+}
+.owl-theme .owl-nav [class*=owl-]:hover {
+  background: transparent;
+}
+.owl-carousel:hover [class*=fa-chevron-circle-] {
+  color: #EBA937;
+}
+.owl-carousel [class*=fa-chevron-circle-]:hover {
+  color: #fff;
+}
+.mat-tab-label {
+  height: 48px;
+  padding: 0 15px !important;
+}
+
+.mat-tab-label .mat-tab-label-content {
+  font-size: large;
+  font-weight: 700;
+  font-family: Montserrat;
+  min-width: 130px !important;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Structure */
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.show-mobile-only {
+  display: none;
+}
+.show-desktop-only {
+  display:flex;
+}
+@media(max-width: 559px) {
+  .show-mobile-only {
+    display: block;
+  }
+  .show-desktop-only {
+    display: none;
+  }
+}
+
+

@@ -1,0 +1,257 @@
+<app-navbar (toggle)="toggleSidenav($event)"></app-navbar>
+<!-- <header> -->
+  <!-- <div class="top-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 d-none d-md-block top-header-mail">
+          <a href="mailto:example@tutorialspark.com">
+          <i class="fa fa-envelope mr-1" aria-hidden="true"></i>
+          info@aste.com
+        </a>
+            | &nbsp; Free Shipping for all Order of $99
+        </div>
+        <div class="col-md-3 col-9 top-header-social">
+          <a href="tel:7006654570"><i class="fa fa-phone" aria-hidden="true"></i> +91 9797564345</a>
+          <a href="#"><mdb-icon fab icon="facebook-f"></mdb-icon></a>
+          <a href="#"><mdb-icon fab icon="twitter"></mdb-icon></a>
+          <a href="#"><mdb-icon fab icon="instagram"></mdb-icon></a>
+        </div>
+        <div class="col-md-3 col-3 top-header-login" style="text-align: right;">
+          <a routerLink="/login">
+          <i class="fa fa-user mr-1" aria-hidden="true"></i>
+            Login
+          </a>
+          <a routerLink="/admin">
+          <i class="fa fa-user mr-1" aria-hidden="true"></i>
+            Admin
+          </a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- <div class="header-middle">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3  mb-sm-2">
+
+          <select class="form-control jkts-select select-deptt input-lg ">
+              <option selected>All Deparments</option>
+              <option class="select-option"> Categories 1</option>
+              <option class="select-option"> Categories 2</option>
+              <option class="select-option"> Categories 3</option>
+              <option class="select-option"> Categories 4</option>
+            </select>
+            <i class="fa fa-chevron-down"></i>
+
+        </div>
+        <div class="col-sm-6 header-search">
+
+            <div class="input-group">
+              <div class="input-group-prepend d-none d-md-block">
+
+                    <select class="form-control jkts-select" disabled>
+                      <option selected>All Categories</option>
+                    </select>
+
+              </div>
+              <input type="search" name="" class="form-control jkts-input" id="" placeholder="What do you need?">
+              <div class="input-group-append">
+                <button class="btn jkts-btn" type="button">Search</button>
+              </div>
+            </div>
+
+        </div>
+        <div class="col-sm-3">
+          <div class="float-right">
+            <div class="jkts-cart-section">
+              <button mat-icon-button class="jkts-cart-icon">
+                <mat-icon matBadge="0" matBadgeSize="small" >favorite</mat-icon>
+              </button>
+              <div class="cart-hover">
+                  <button mat-icon-button
+                          (mouseover)="showCartonMouseOver()"
+                          aria-labelledby="My Cart"
+                          class="jkts-cart-icon cart-btn">
+                    <mat-icon [matBadge]="totalItem" matBadgeSize="small">shopping_cart</mat-icon>
+                  </button>
+                  <div class="cart-content cart-animate cart-animate2">
+                    <a href="#" class="cart-item">Link 1</a>
+                    <a href="#" class="cart-item">Link 2</a>
+                    <a href="#" class="cart-item">Link 3</a>
+                  </div>
+              </div>
+               <span class="font-weight-bold pl-3"> {{ cartTotal |currency }} </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<!--   <div class="header-menu">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 header-bottom">
+            <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark ie-nav text-uppercase" [containerInside]="true">
+              <mdb-navbar-brand>
+                  <a class="logo navbar-brand" routerLink=""><img src="assets/images/logo_btech.png" alt="" class="jkts-brand" width="150px"></a>
+              </mdb-navbar-brand>
+              <links>
+                  <ul class="navbar-nav ml-auto">
+                      <li class="nav-item active waves-light" mdbWavesEffect>
+                          <a class="nav-link border-ryt" routerLink="">Home <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item waves-light" mdbWavesEffect>
+                          <a class="nav-link border-ryt">SHOP</a>
+                      </li>
+
+                      <li class="nav-item dropdown btn-group" dropdown [ngClass]="{'show open':isHidden==false}" (mouseover)="togglePages()" (mouseout)="togglePages()">
+                        <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light border-ryt" mdbWavesEffect>
+                          Pages
+                        </a>
+                        <div class="dropdown-menu dropdown-animate dropdown-primary dropdown-menu-right" role="menu" [ngClass]="{'fadeInDropdown':isHidden==false}">
+                          <a class="dropdown-item" routerLink="shopping-cart">Shopping Cart</a>
+                          <a class="dropdown-item" (click)="logout()">Logout</a>
+                          <a class="dropdown-item" routerLink="/login">Login</a>
+                        </div>
+                      </li>
+
+                      <li class="nav-item dropdown mega-dropdown" dropdown [ngClass]="{'show open':isHiddenMega==false}" (mouseover)="toggleMega()" (mouseout)="toggleMega()" >
+                        <a dropdownToggle type="button" class="nav-link dropdown-toggle text-uppercase border-ryt" id="megaCollection" data-toggle="dropdown"
+                          >Collection</a>
+                        <div class="dropdown-menu dropdown-animate mega-menu v-2 special-color py-5 px-3" [ngClass]="{'fadeInDropdown':isHiddenMega==false}"
+                          aria-labelledby="megaCollection">
+                          <div class="container">
+                            <div class="row">
+                              <div class="col-sm-12 col-md-6 col-xl-3 sub-menu">
+                                <h6 class="sub-title text-uppercase font-weight-bold white-text">Featured</h6>
+                                <a href="#!" class="view overlay mb-2">
+                                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/8-col/img%20(37).jpg"
+                                    class="img-fluid" alt="First sample image">
+                                  <div class="mask rgba-white-slight"></div>
+                                </a>
+                                <a class="news-title font-weight-bold pl-0" href="#!">Lorem ipsum dolor sit</a>
+                                <p class="font-small text-uppercase white-text">
+                                  <i class="fas fa-clock-o pr-2"></i>July 17, 2017 / <i
+                                    class="far fa-comments px-1"></i> 20
+                                </p>
+                              </div>
+                              <div class="col-sm-12 col-md-6 col-xl-3 sub-menu">
+                                <h6 class="sub-title text-uppercase font-weight-bold white-text">Related</h6>
+                                <ul class="list-unstyled">
+                                  <li>
+                                    <a class="menu-item pl-0" href="#!">
+                                      <i class="fas fa-caret-right pl-1 pr-3"></i>Quis nostrud exercitation
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a class="menu-item pl-0" href="#!">
+                                      <i class="fas fa-caret-right pl-1 pr-3"></i>Duis aute irure dolor in
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a class="menu-item pl-0" href="#!">
+                                      <i class="fas fa-caret-right pl-1 pr-3"></i>Laboris nisi ut aliquip ex ea commodo consequat
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a class="menu-item pl-0" href="#!">
+                                      <i class="fas fa-caret-right pl-1 pr-3"></i>Reprehenderit in voluptate
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a class="menu-item pl-0" href="#!">
+                                      <i class="fas fa-caret-right pl-1 pr-3"></i>Esse cillum dolore eu fugiat nulla pariatur
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="col-sm-12 col-md-6 col-xl-3 sub-menu">
+                                <h6 class="sub-title text-uppercase font-weight-bold white-text">Featured</h6>
+                                <a href="#!" class="view overlay mb-2">
+                                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/8-col/img%20(37).jpg"
+                                    class="img-fluid" alt="First sample image">
+                                  <div class="mask rgba-white-slight"></div>
+                                </a>
+                                <a class="news-title font-weight-bold pl-0" href="#!">Lorem ipsum dolor sit</a>
+                                <p class="font-small text-uppercase white-text">
+                                  <i class="fas fa-clock-o pr-2"></i>July 17, 2017 / <i
+                                    class="far fa-comments px-1"></i> 20
+                                </p>
+                              </div>
+                              <div class="col-sm-12 col-md-6 col-xl-3 sub-menu">
+                                <h6 class="sub-title text-uppercase font-weight-bold white-text">Design</h6>
+                                <ul class="list-unstyled">
+                                  <li>
+                                    <a class="menu-item pl-0" href="#!">
+                                      <i class="fas fa-caret-right pl-1 pr-3"></i>Excepteur sint occaecat
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a class="menu-item pl-0" href="#!">
+                                      <i class="fas fa-caret-right pl-1 pr-3"></i>Sunt in culpa qui officia
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a class="menu-item pl-0" href="#!">
+                                      <i class="fas fa-caret-right pl-1 pr-3"></i>Sed ut perspiciatis unde omnis iste natus error
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a class="menu-item pl-0" href="#!">
+                                      <i class="fas fa-caret-right pl-1 pr-3"></i>Mollit anim id est laborum
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a class="menu-item pl-0" href="#!">
+                                      <i class="fas fa-caret-right pl-1 pr-3"></i>Accusantium doloremque laudantium
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+
+                  </ul>
+                  <ul class="navbar-nav nav-flex-icons">
+                      <li class="nav-item waves-light" mdbWavesEffect>
+
+                        <div class="jkts-cart-section">
+                          <button mat-icon-button class="jkts-cart-icon">
+                            <mat-icon matBadge="0" matBadgeSize="small" >favorite</mat-icon>
+                          </button>
+                          <div class="cart-hover">
+                              <button mat-icon-button
+                                      (mouseover)="showCartonMouseOver()"
+                                      aria-labelledby="My Cart"
+                                      class="jkts-cart-icon cart-btn">
+                                <mat-icon [matBadge]="totalItem" matBadgeSize="small">shopping_cart</mat-icon>
+                              </button>
+                              <div class="cart-content cart-animate cart-animate2">
+                                <a href="#" class="cart-item">Link 1</a>
+                                <a href="#" class="cart-item">Link 2</a>
+                                <a href="#" class="cart-item">Link 3</a>
+                              </div>
+                          </div>
+                           <span class="font-weight-bold pl-3"> {{ cartTotal |currency }} </span>
+                        </div>
+                      </li>
+                      <li class="nav-item waves-light" mdbWavesEffect>
+                        <a class="nav-link"><mdb-icon fab icon="facebook"></mdb-icon></a>
+                      </li>
+                      <li class="nav-item waves-light" mdbWavesEffect>
+                          <a class="nav-link"><mdb-icon fab icon="twitter"></mdb-icon></a>
+                      </li>
+                      <li class="nav-item waves-light" mdbWavesEffect>
+                          <a class="nav-link"><mdb-icon fab icon="instagram"></mdb-icon></a>
+                      </li>
+                  </ul>
+              </links>
+            </mdb-navbar>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<!-- </header> -->

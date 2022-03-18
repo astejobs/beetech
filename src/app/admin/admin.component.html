@@ -1,0 +1,21 @@
+<mat-drawer-container class="example-container" hasBackdrop="false" style="height: 100%;">
+  <mat-drawer #drawer mode="side" opened class="sideNav p-2" fixedInViewport="true">
+ <!--  <mat-drawer #drawer [opened]="(isHandset$ | async) ? 'false' : 'opened'"
+  [mode]="(isHandset$ | async) ? 'side' : 'side'" class="sideNav p-2"> -->
+  <!-- <mat-drawer mode="side" #drawer opened fixedInViewport="fixed"> -->
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+      <mat-toolbar>
+        <button mat-icon-button (click)="drawer.toggle()" class="mr-2">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <app-navbar></app-navbar>
+      </mat-toolbar>
+      <div class="container txt-color p-md-5">
+
+        <router-outlet></router-outlet>
+
+      </div>
+  </mat-drawer-content>
+</mat-drawer-container>

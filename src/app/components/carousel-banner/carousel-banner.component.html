@@ -1,0 +1,19 @@
+<owl-carousel-o [options]="customOptions">
+
+  <ng-template carouselSlide *ngFor="let slide of slidesStore" [id]="slide.id">
+
+     <div class="custom_overlay_wrapper">
+      <img [src]="slide.src" [alt]="slide.alt" [title]="slide.title" class="img-responsive" height="625px">
+      <div class="custom_overlay">
+          <div class="custom_overlay_inner jumbotron">
+              <span>{{ slide.title }}</span>
+              <h2 class="d-none d-md-block"> {{ slide.desc }} <br> {{ slide.desc1 }} </h2>
+              <p>{{ slide.desc2 }}</p>
+              <a routerLink="shopping-cart" class="primary-btn">SHOP NOW</a>
+          </div>
+      </div>
+    </div>
+
+  </ng-template>
+
+</owl-carousel-o>

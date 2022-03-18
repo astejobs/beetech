@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 jumbotron">
+      <!-- ////////////// REGISTER //////////////////////////// -->
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister(registerForm)">
+
+        <h3 class=" text-center">Enter Details To Register</h3>
+        <!-- Phone Number input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="phone">Phone Number</label>
+          <input type="phoneNumber" formControlName="phoneNumber" id="phoneNo" class="form-control "
+            placeholder="Enter a valid Phone Number" />
+        </div>
+
+        <div class="form-outline mb-4">
+          <label class="form-label" for="phone">First Name</label>
+          <input type="phoneNumber" formControlName="firstName" id="fname" class="form-control "
+            placeholder="Enter first Name" />
+        </div>
+
+        <div class="form-outline mb-4">
+          <label class="form-label" for="phone">Last Name</label>
+          <input type="phoneNumber" formControlName="lastName" id="lname" class="form-control "
+            placeholder="Enter last name" />
+        </div>
+
+        <div class="form-outline mb-4">
+          <label class="form-label" for="phone">Email</label>
+          <input type="phoneNumber" formControlName="email" id="mail" class="form-control "
+            placeholder="Enter a valid email [Optional]" />
+        </div>
+
+        <!-- <div class="form-group">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" value="male" class="custom-control-input" id="defaultInline1" formControlName="gender">
+              <label class="custom-control-label" for="defaultInline1">Male</label>
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" value="female" class="custom-control-input" id="defaultInline2" formControlName="gender">
+              <label class="custom-control-label" for="defaultInline2">Female</label>
+            </div>
+
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" value="other" class="custom-control-input" id="defaultInline3" formControlName="gender">
+              <label class="custom-control-label" for="defaultInline3">Other</label>
+            </div>
+        </div> -->
+
+        <!-- Password input -->
+        <div class="form-outline mb-3">
+          <label class="form-label" for="form3Example4">Password</label>
+          <input type="password" formControlName="password" id="password" class="form-control "
+            placeholder="Enter password" />
+        </div>
+
+        <div class="form-outline mb-3">
+          <label class="form-label" for="form3Example4">Confirm Password</label>
+          <input type="password" formControlName="confirmPassword" id="cpass" class="form-control "
+            placeholder="Confirm password" />
+        </div>
+
+        <div class="text-center text-lg-start mt-2 pt-2">
+          <button type="submit" class="btn btn-success btn-block">Register</button>
+          <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a href="#!"
+              routerLink="/login" class="link-danger">Login</a></p>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

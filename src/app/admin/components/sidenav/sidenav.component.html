@@ -1,0 +1,93 @@
+
+<mat-nav-list>
+  <mat-list-item >
+    <a matLine routerLink="dashboard">Dashboard</a>
+    <button mat-icon-button>
+      <mat-icon>dashboard</mat-icon>
+    </button>
+</mat-list-item>
+  <mat-divider></mat-divider>
+
+  <mat-list-item  routerLink="products" >
+    <mat-icon class="mr-1 mb-1">inventory</mat-icon>Products
+  </mat-list-item>
+
+  <mat-divider></mat-divider>
+
+  <mat-list-item routerLink="category" >
+    <mat-icon class="mr-1 mb-1">category</mat-icon>Categories
+  </mat-list-item>
+
+  <mat-divider></mat-divider>
+
+  <mat-list-item routerLink="orders" >
+    <mat-icon class="mr-1 mb-1">inventory</mat-icon>Orders
+  </mat-list-item>
+
+  <mat-divider></mat-divider>
+
+  <mat-list-item routerLink="unit" >
+    <mat-icon class="mr-1 mb-1">payments</mat-icon>Unit Management
+  </mat-list-item>
+
+  <mat-divider></mat-divider>
+
+  <mat-list-item routerLink="demo">
+    <mat-icon class="mr-1 mb-1">info</mat-icon>Demo
+  </mat-list-item>
+
+</mat-nav-list>
+    <mat-accordion class="mt-4">
+      <mat-expansion-panel class="mb-1 text-white side-menu-panel">
+        <mat-expansion-panel-header class="text-white">
+          <mat-panel-title>
+            Products
+          </mat-panel-title>
+          <mat-panel-description>
+            <hr>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+           <!--  <a class="list-group-item active bg-dark" routerLink="dashboard" >Dashboard</a>
+            <a class="list-group-item bg-dark"  routerLink="products" >Products</a>
+            <a class="list-group-item bg-dark" routerLink="add-product" >Add Product</a>
+            <a class="list-group-item bg-dark" routerLink="demo">Demo</a> -->
+
+            <mat-list>
+              <mat-divider></mat-divider>
+              <mat-divider></mat-divider>
+              <mat-list-item routerLink="add-product" >
+                <mat-icon class="mr-1 mb-1">add</mat-icon>Add Product
+              </mat-list-item>
+              <mat-list-item routerLink="demo">
+                <mat-icon class="mr-1 mb-1">info</mat-icon>Demo
+              </mat-list-item>
+            </mat-list>
+
+      </mat-expansion-panel>
+      <mat-expansion-panel class="mb-1 text-white side-menu-panel">
+        <mat-expansion-panel-header class="text-white">
+          <mat-panel-title>
+            Drop Menu
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <mat-list-item >
+             <a matLine routerLink="dashboard">Item</a>
+             <button mat-icon-button>
+                <mat-icon>info</mat-icon>
+             </button>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-nav-list>
+        <mat-list-item >
+          <a matLine routerLink="dashboard">Item 2</a>
+          <button mat-icon-button>
+            <mat-icon>info</mat-icon>
+          </button>
+      </mat-list-item>
+  </mat-nav-list>
+

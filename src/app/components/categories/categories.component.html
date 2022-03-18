@@ -1,0 +1,34 @@
+<mat-tab-group color="primary"
+              backgroundColor="accent"
+              mat-align-tabs="center"
+              animationDuration="1000ms"
+              >  <!-- dynamicHeight -->
+    <mat-tab label="All">
+        <ng-template matTabContent>
+          <app-products></app-products>
+        </ng-template> </mat-tab>
+    <mat-tab label="Vegetables">
+        <ng-template matTabContent>
+          Content 2 - Loaded: {{getTimeLoaded(2) | date:'medium'}}
+        </ng-template> </mat-tab>
+    <mat-tab label="Fresh Meat">
+        <ng-template matTabContent>
+          Content 3 - Loaded: {{getTimeLoaded(3) | date:'medium'}}
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="Fastfood">
+        <ng-template matTabContent>
+          Content 3 - Loaded: {{getTimeLoaded(3) | date:'medium'}}
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="Clothing">
+        <ng-template matTabContent>
+          Content 3 - Loaded: {{getTimeLoaded(3) | date:'medium'}}
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="Kiryana">
+        <ng-template matTabContent>
+          Content 3 - Loaded: {{getTimeLoaded(3) | date:'medium'}}
+        </ng-template>
+    </mat-tab>
+</mat-tab-group>

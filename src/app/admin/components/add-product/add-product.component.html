@@ -1,0 +1,185 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12"> <!-- offset-md-1 -->
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)" class="form-horizontal">
+                <!-- Form Name -->
+                <h4>PRODUCTS</h4>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <input type="hidden" name="id" formControlName="id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.id.errors }" placeholder="Product Id">
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="control-label" for="product_name">PRODUCT NAME</label>
+                  <input name="name" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Product Name" type="text">
+                  <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Product Name is required</div>
+                  </div>
+                </div>
+
+                <!-- Select Basic -->
+                <div formGroupName="category">
+                  <div class="form-group">
+                    <label class=" control-label" for="product_categorie">PRODUCT CATEGORY</label>
+                      <select name="category" formControlName="id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
+                        <option value="" disabled>Choose Category</option>
+                        <option *ngFor="let category of categories" [ngValue]="category.id"> {{category.name}}</option>
+                      </select>
+                      <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+                        <div *ngIf="f.category.errors.required">Category is required</div>
+                      </div>
+                  </div>
+                </div>
+
+                <!-- About Product -->
+                <div class="form-group">
+                    <label class="control-label" for="product_description">ABOUT PRODUCT</label>
+                    <textarea id="aboutProduct" name="aboutProduct" formControlName="aboutProduct" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.aboutProduct.errors }"></textarea>
+                    <div *ngIf="submitted && f.aboutProduct.errors" class="invalid-feedback">
+                      <div *ngIf="f.aboutProduct.errors.required">About Product Detail is required</div>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-sm-6">
+                      <label class="control-label" for="price">WEIGHT</label>
+                      <input type="text" id="weight" name="weight" formControlName="weight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.weight.errors }">
+                      <div *ngIf="submitted && f.weight.errors" class="invalid-feedback">
+                        <div *ngIf="f.weight.errors.required">Product weight is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group col-sm-6">
+                      <label class="control-label" for="price">PRICE</label>
+                      <input type="text" id="description" name="price" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }">
+                      <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                        <div *ngIf="f.price.errors.required">Product Price is required</div>
+                      </div>
+                      <span *ngIf="submitted && f.price.errors?.min" class="invalid-feedback">
+                        Price cannot be negative.
+                      </span>
+                      <span *ngIf="submitted && f.price.errors?.pattern" class="invalid-feedback">
+                        Price must be greater than zero
+                      </span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-sm-6">
+                      <label class="control-label" for="price">PRODUCT STOCK</label>
+                      <input type="text" id="weight" name="productStock" formControlName="productStock" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.productStock.errors }">
+                      <div *ngIf="submitted && f.productStock.errors" class="invalid-feedback">
+                        <div *ngIf="f.productStock.errors.required">Product Stock is required</div>
+                      </div>
+                      <span *ngIf="submitted && f.productStock.errors?.min" class="invalid-feedback">
+                        Product Stock cannot be negative.
+                      </span>
+                      <span *ngIf="submitted && f.productStock.errors?.pattern" class="invalid-feedback">
+                        Product Stock must be greater than zero
+                      </span>
+                  </div>
+                  <div class="form-group col-sm-6">
+                      <label class="control-label" for="price">SUB HEADING (IF ANY)</label>
+                      <input type="text" id="shortDescription" name="shortDescription" formControlName="shortDescription" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.shortDescription.errors }">
+                      <div *ngIf="submitted && f.shortDescription.errors" class="invalid-feedback">
+                        <div *ngIf="f.shortDescription.errors.required">Short Description is required</div>
+                      </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-sm-6">
+                      <label class="control-label" for="brand">PRODUCT BRAND</label>
+                      <input type="text" id="description" name="brand" formControlName="brand" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.brand.errors }">
+
+                  </div>
+                  <div class="form-group col-sm-6">
+                      <label class="control-label" for="flavour">FLAVOUR</label>
+                      <input type="text" id="flavour" name="flavour" formControlName="flavour" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.flavour.errors }">
+
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-sm-6">
+                      <label class="control-label" for="packageInfo">PACKAGE INFORMATION </label>
+                      <input type="text" id="packageInfo" name="packageInfo" formControlName="packageInfo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.packageInfo.errors }">
+
+                  </div>
+                  <div class="form-group col-sm-6">
+                      <label class="control-label" for="discount">DISCOUNT </label>
+                      <input type="text" id="discount" name="discount" formControlName="discount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.discount.errors }">
+
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="product_description">PRODUCT DESCRIPTION</label>
+                    <textarea id="description" name="description" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+                    <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                      <div *ngIf="f.description.errors.required">Product Description is required</div>
+                    </div>
+                </div>
+
+                <ng-container formArrayName="productImages">
+                  <div *ngFor="let image of productForm.get('productImages')['controls']; let i = index;" class="mb-3 p-3">
+                   <!--  <div [formGroupName]="i" class="row"> -->
+                     <!--  <input type="hidden" formControlName="id" class="form-control">
+                      <input type="hidden" formControlName="type" class="form-control">
+                      <input type="hidden" formControlName="name" class="form-control">
+                      <input type="hidden" name="image" formControlName="image" [value]="croppedImage" class="form-control"> -->
+                      <input type="hidden" [formControlName]="i" [value]="croppedImage" class="form-control">
+                   <!--  </div> -->
+                  </div>
+                </ng-container>
+               <!--  <input type="hidden" name="productImages" formControlName="productImages" [value]="croppedImage" class="form-control"> -->
+
+                <div class="clearfix"></div>
+              <div class="container">
+                <div class="row">
+                  <div class="card col-sm-12">
+                    <div class="card-header">
+                      UPLOAD PRODUCT IMAGE
+                    </div>
+                    <div class="card-body">
+                      <div *ngIf="submitted && !hasImage" class="invalid-feedback">
+                        <div *ngIf="!hasImage">Product Image is required</div>
+                      </div>
+                      <input type="file" (change)="fileChangeEvent($event)" accept="image/*" />
+                      <input type="hidden" name="images[]" [value]="images" />
+
+                      <div class="row mt-3">
+                          <div class="text-center col-md-8">
+                              <h5>Crop Image</h5>
+                              <image-cropper
+                                  [imageChangedEvent]="imageChangedEvent"
+                                  format="jpeg"
+                                  [backgroundColor]="'#fafafa'"
+                                  [imageQuality]="75"
+                                  [aspectRatio]="3/4"
+                                  (imageCropped)="imageCropped($event)"
+                                  (imageLoaded)="imageLoaded()"
+                                  (cropperReady)="cropperReady()"
+                                  (loadImageFailed)="loadImageFailed()"></image-cropper>
+                              <!--  [resizeToWidth]="256"
+                                [maintainAspectRatio]="true"
+                               [aspectRatio]="4 / 4"
+                              [backgroundColor]="e2e2e2" -->
+                          </div>
+                          <div class="text-center col-md-4">
+                              <h5>Preview</h5>
+                              <img [src]="croppedImage" />
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+                <!-- Button -->
+               <div class="form-group"> <!-- [disabled]="!productForm.valid" -->
+                    <button class="btn btn-dark btn-block" type="submit">
+                      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                      Add Product
+                    </button>
+                </div>
+        </form>
+    </div>
+  </div>
+</div>
