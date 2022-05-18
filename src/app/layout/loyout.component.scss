@@ -31,32 +31,40 @@ app-body {
   position: -webkit-sticky;
   top: 0;
   z-index: 1000;
+  width:100%;
 }
 
 .app-navbar-Nobg {
   background: transparent !important;
-  color: #fff
+  color: #fff;
+  width:100% !important;
 }
 .app-navbar-bg {
   /* background: #e9ecef !important; */
   color: #888 !important;
   /* background: #EBA937 !important; */
-  background: url("../../assets/images/header-bg.png"), linear-gradient(rgb(255, 255, 255,0), rgb(255, 255, 255,0));
+  //background: url("../../assets/images/header-bg.png"), linear-gradient(rgb(255, 255, 255,0), rgb(255, 255, 255,0));
   /* background: linear-gradient(rgb(236, 194, 7), rgba(218, 233, 11, 0.836)), url("../../assets/images/header-bg.png"); */
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: cover;
+ // background-repeat: no-repeat;
+  //background-position: 50% 50%;
+ // background-size: cover;
+  width:100%;
+}
+.app-navbar-home{
+  width:100%;
 }
 .example-spacer {
   flex: 1 1 auto;
 }
 
+
 mat-sidenav-container, mat-sidenav-content, mat-sidenav {
   height: 100%;
+  width:100%;
 }
 
 mat-sidenav {
-  width: 250px;
+  width:100%;
 }
 
 main {
@@ -72,6 +80,14 @@ div {
   font-size: 110%;
   white-space: normal;
   display: block;
+}
+.HomeLogo
+{
+ margin-left:200px;
+}
+.HomeLogoDiv
+{
+ align-items: center;
 }
 
 /* .mat-sidenav-content{

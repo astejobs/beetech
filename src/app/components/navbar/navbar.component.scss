@@ -13,7 +13,7 @@
 }
 
 ::ng-deep .header-bottom  .navbar {
-  box-shadow: none !important;
+  //box-shadow: none !important;
   font-family: Montserrat;
   /* padding: 0.2rem 0rem !important; */
  /*  background-color: #EBA937; */
@@ -26,9 +26,10 @@
   text-transform: uppercase;
   display: flex;
   padding: 10px 42px 9px;
-  -webkit-transition: all 0.3s;
+  box-shadow: none !important;
+  /*-webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
-  transition: all 0.3s;
+  transition: all 0.3s;*/
 }
 
 /* .navbar-nav .nav-item.active>.nav-link {
@@ -39,16 +40,23 @@
  /*  background-color: rgba(255, 255, 255, 0.411); */
   background-color: none !important;
   color: #EBA937;
+  width:100%;
   /* background-color: #EBA937; */
 }
 ::ng-deep .navbar-nav .dropdown-menu-right.dropdown-menu {
   left: unset;
   /* background: #EBA937; */
-  background: url("../../../assets/images/menu-bg.png"), linear-gradient(rgb(255, 255, 255,0), rgb(255, 255, 255,0));
+  // background: url("../../../assets/images/menu-bg.png"), linear-gradient(rgb(255, 255, 255,0), rgb(255, 255, 255,0));
   border: 0px;
   border-radius: 0px;
   perspective: 1000px
 
+}
+::ng-deep .navbar .dropdown-menu a:hover{
+color:#EBA937 !important;
+font-weight: bold !important;
+transition:  transform 2s;
+transform:  rotateY(360deg);
 }
 ::ng-deep .navbar .dropdown-menu a {
   /* color: #000 !important; */
@@ -57,13 +65,16 @@
   font-family: Montserrat;
   padding: 10px 15px ;
   text-transform: uppercase;
-  -webkit-transition: all 0.3s;
+  color:black ;
+  text-align: center;
+  /*-webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
-  transition: all 0.3s;
+  transition: all 0.3s;*/
 }
 ::ng-deep .dropdown-item:hover {
   color: #fff !important;
   background: none !important;
+  
   /* background-color: #EBA937; */
   /* background-color: rgba(255, 255, 255, 0.411); */
 }
@@ -231,11 +242,37 @@
     }
   }
 
+  .LinksHome
+  {
+    width:100% !important;
+  }
+
   .user-li a{
     border: 1px solid #d89504;
     border-radius: 10px;
-    color: #d89504 !important;
+    color:black !important;
   }
 
+.HomeNavLeft{
+  float:left;
 
+}
+.HomeNavLeft1{
+  float:left;
+}
+.HomeLogoDiv{
+  float:left;
+ 
+
+}
+.HomeLogoDiv img{
+margin-left:150px;
+margin-top: 8px;
+width:100px;
+height: 50px !important;
+}
+.HomeNav2{
+  float:right;
+  display: flex;
+}
 

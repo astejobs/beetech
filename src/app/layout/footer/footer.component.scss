@@ -1,6 +1,7 @@
 .footer-section {
   /* background: #EBA937; */ /*#7ca046 191919 */
-  background: linear-gradient(rgba(236, 194, 7, 0), rgba(218, 233, 11, 0)), url("../../../assets/images/header-bg.png");
+  // background: linear-gradient(rgba(236, 194, 7, 0), rgba(218, 233, 11, 0)), url("../../../assets/images/header-bg.png");
+ background-color: #E2EEF6;
   padding-top: 65px;
 }
 .footer-section ul, ol {
@@ -15,7 +16,7 @@
 }
 
 .copyright-reserved .copyright-text {
-  float: left;
+  //float: left;
   font-size: 16px;
   color: #333;
 }
@@ -94,10 +95,11 @@
 }
 .newslatter-item .subscribe-form {
   position: relative;
+  margin-top: 15px;
 }
 .newslatter-item .subscribe-form input {
   color: #444;
-  background: #f5d104ee;
+  background: whitesmoke;
   width: 100%;
   height: 51px;
   font-size: 16px;

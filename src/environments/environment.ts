@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'http://192.168.0.111:8087',
+  BASE_URL: 'http://localhost:8087',
   //BASE_URL: 'http://192.168.1.14:8087',
-  adminUrl: 'http://localhost:8081/admin',
+  adminUrl: 'http://localhost:8087/admin',
   paytmUrl:  'https://securegw-stage.paytm.in/order/process'
 };
 

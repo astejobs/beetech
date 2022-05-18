@@ -2,7 +2,7 @@
   <div class="row ">
     <div class="col-sm-5">
       <div class="row" >
-        <div class="col-sm-12 p-2">
+        <div class="col-sm-8 p-2">
           <lib-ngx-image-zoom class="img-fluid zoom-component"
             [thumbImage]=selectedImage
             [fullImage]=selectedImage
@@ -21,9 +21,9 @@
           <table class="table table-borderless">
             <tbody>
               <tr>
-                <td *ngFor="let iName of product?.productImages" class="col-25">
+                <td *ngFor="let iName of product?.productImages">
                   <div class="img-container" (click)="onSelectImage(product.images[iName])">
-                    <img [src]="product.images[iName] | safe:'resourceUrl'" class="img-fluid img-thumbnail">
+                    <img [src]="product.images[iName] | safe:'resourceUrl'" class="img-fluid ProductImage">
                     <div class="overlay">
                       <div class="text"></div>
                     </div>

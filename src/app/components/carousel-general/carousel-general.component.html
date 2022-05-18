@@ -1,11 +1,12 @@
+
 <owl-carousel-o [options]="customOptions" *ngIf="showCarousel">
 
   <ng-template carouselSlide *ngFor="let product of products;let i=index" [id]="product.id">
     <div class="custom_overlay_wrapper">
         <a [routerLink]="['/products', product.id]">
-          <img [src]="product.images[product.productImages[0]] | safe:'url'" [alt]="product.name" [title]="product.name" class="img-fluid">
+          <img [src]="product.images[product.productImages[0]] | safe:'url'" [alt]="product.name" [title]="product.name">
         </a>
-        <div class="custom_overlay">
+        <div class="custom_overlay ">
             <div class="category-name w-100">
               <span class="w-100 text-center">
                 <button mat-icon-button class="btn-cat" (click)="addToFavourites(product)"><mat-icon class="mr-2">favorite</mat-icon></button>
@@ -19,3 +20,5 @@
   </ng-template>
 
 </owl-carousel-o>
+
+

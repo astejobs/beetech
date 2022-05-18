@@ -47,7 +47,7 @@ export class ProductsComponent implements OnInit {
   }
 
   addProduct() {
-    this.redirectTo("/admin/add-product")
+    this.router.navigate(["/admin/add-product"]);
   }
 
   getProducts() {
@@ -62,7 +62,9 @@ export class ProductsComponent implements OnInit {
   }
 
   getProduct(id) {
-    this.redirectTo("/admin/edit-product/"+id);
+    console.log('idddd',id);
+    // this.redirectTo('/admin/edit-product/'+id);
+    this.router.navigate(['/admin/edit-product/'+id]);
   }
 
   deleteProduct(id) {

@@ -1,9 +1,10 @@
+
 <owl-carousel-o [options]="customOptions">
 
   <ng-template carouselSlide *ngFor="let slide of slidesStore" [id]="slide.id">
 
-     <div class="custom_overlay_wrapper">
-      <img [src]="slide.src" [alt]="slide.alt" [title]="slide.title" class="img-responsive" height="625px">
+     <div class="custom_overlay_wrapper ">
+      <img [src]="slide.src" [alt]="slide.alt" [title]="slide.title" class="img-responsive" height="700px">
       <div class="custom_overlay">
           <div class="custom_overlay_inner jumbotron">
               <span>{{ slide.title }}</span>

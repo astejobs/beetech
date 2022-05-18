@@ -28,9 +28,10 @@ export class CarouselGeneralComponent implements OnInit, OnDestroy {
     touchDrag: true,
     pullDrag: false,
     autoWidth: false,
-    margin: 20,
+    margin: 0,
     autoHeight: true,
     autoplaySpeed:1000,
+    
     //smartSpeed: 100,
     //responsiveRefreshRate: 100,
     //slideBy: 1,

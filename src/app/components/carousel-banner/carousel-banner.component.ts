@@ -20,31 +20,31 @@ export class CarouselBannerComponent implements OnInit {
     }, */
     {
       id:3,
-      src:'assets/images/1975094.jpg',
+      src:'assets/images/121121.jpg',
       alt:'Image_1',
       title:'Natural Honey',
       desc: 'Honey',
       desc1: '100% Organic',
       desc2: 'free pickup and delivery available CA'
     },
-    {
-      id:4,
-      src:'assets/images/3234700.jpg',
-      alt:'Image_1',
-      title:'Natural Honey',
-      desc: 'Honey',
-      desc1: '100% Organic',
-      desc2: 'free pickup and delivery available CA'
-    },
-    {
-      id:5,
-      src:'assets/images/1604298.jpg',
-      alt:'Image_1',
-      title:'Natural Honey',
-      desc: 'Honey',
-      desc1: '100% Organic',
-      desc2: 'free pickup and delivery available CA'
-    },
+    // {
+    //   id:4,
+    //   src:'assets/images/3234700.jpg',
+    //   alt:'Image_1',
+    //   title:'Natural Honey',
+    //   desc: 'Honey',
+    //   desc1: '100% Organic',
+    //   desc2: 'free pickup and delivery available CA'
+    // },
+    // {
+    //   id:5,
+    //   src:'assets/images/1604298.jpg',
+    //   alt:'Image_1',
+    //   title:'Natural Honey',
+    //   desc: 'Honey',
+    //   desc1: '100% Organic',
+    //   desc2: 'free pickup and delivery available CA'
+    // },
     /* {
       id:2,
       src:'assets/images/carouselImg33.jpg',
