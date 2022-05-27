@@ -110,6 +110,7 @@ export class CategoryComponent implements OnInit, AfterViewInit, OnDestroy {
               });
               this.loading = false;
               this.redirectTo('/admin/category');
+              
             },
             error => {
                 console.log(error);

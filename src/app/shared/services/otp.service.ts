@@ -16,6 +16,7 @@ export class OtpService {
 
   verifyOtp(verifyOtp: VerifyOtp) {
     return this.apiService.verifyOtp(verifyOtp);
+  
   }
 
 }

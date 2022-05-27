@@ -232,10 +232,19 @@ transform:  rotateY(360deg);
 }
 
  @media only screen and (max-width: 599px) {
-    .hide-mobile {
-      display:none;
+    // .hide-mobile {
+    //   display:none;
+    // }
+    .HomeLogoDiv{
+      
+    margin-left: 0 !important;
+    margin-top: 8px;
+    width: 100px;
+    height: auto;
+}
     }
-  }
+  
+  
  @media only screen and (min-width: 600px) {
     .show-mobile {
       display:block;
@@ -245,6 +254,7 @@ transform:  rotateY(360deg);
   .LinksHome
   {
     width:100% !important;
+    
   }
 
   .user-li a{

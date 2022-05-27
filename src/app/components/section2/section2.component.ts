@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./section2.component.scss']
 })
 export class Section2Component implements OnInit {
+  router: any;
 
   constructor() {
    }
@@ -13,4 +14,5 @@ export class Section2Component implements OnInit {
   ngOnInit(): void {
   }
 
+ 
 }

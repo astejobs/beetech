@@ -1,75 +1,73 @@
-
-  <div class="col-sm-12">
-    <mdb-navbar SideClass="navbar shadow-none navbar-expand navbar-light text-uppercase" [containerInside]="true">
-     <!--  <mdb-navbar-brand>
+<div class=" col-sm-12   ">
+  <mdb-navbar SideClass="navbar shadow-none navbar-expand navbar-light text-uppercase" [containerInside]="true">
+    <!--  <mdb-navbar-brand>
           <a class="logo navbar-brand" routerLink=""><img src="assets/images/logo_btech.png" alt="" class="jkts-brand" width="150px"></a>
       </mdb-navbar-brand> -->
-      <links class="hide-mobile LinksHome">
-        <div class="HomeNavLeft1 col-sm-4">
-          <ul class="navbar-nav ml-auto">
-              <li class="nav-item waves-light" mdbWavesEffect routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                  <a class="nav-link border-ryt" routerLink="/" >Home</a>
-              </li>
-              <li class="nav-item waves-light" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                  <a class="nav-link border-ryt" routerLink="/products" >Shop</a>
-              </li>
-          </ul>
+    <links class=" LinksHome ">
+      <div class="HomeNavLeft1 col-sm-4">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item waves-light" mdbWavesEffect routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link border-ryt" routerLink="/">Home</a>
+          </li>
+          <li class="nav-item waves-light" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link border-ryt" routerLink="/products">Shop</a>
+          </li>
+        </ul>
 
-</div>
+      </div>
 
-              <div class="HomeLogoDiv col-sm-4">
-                <img src="assets/images/logo_btech.png" height="40px" class="HomeLogo">
-              </div>
-                <div class="HomeNav2 col-sm-4">
-              <ul class="navbar-nav ml-auto">
-              <li class="nav-item dropdown btn-group" dropdown [ngClass]="{'show open':isHidden==false}" (mouseover)="togglePages()" (mouseout)="togglePages()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light border-ryt" mdbWavesEffect>
-                  Category
-                </a>
-                <div class="dropdown-menu dropdown-animate dropdown-primary dropdown-menu-right" role="menu" [ngClass]="{'fadeInDropdown':isHidden==false}">
-                  <a class="dropdown-item" routerLink="/cart">Shopping Cart</a>
-                  <a class="dropdown-item" (click)="logout()">Logout</a>
-                  <a class="dropdown-item" routerLink="/login">Login</a>
-                </div>
-              </li>
-              <li class="nav-item waves-light user-li" mdbWavesEffect *ngIf="isLoggedIn && isAdmin">
-                <a class="nav-link border-ryt" routerLink="/admin">
-                  <i class="fa fa-user mr-1"></i>Welcome Admin
-                </a>
-              </li>
-              <li class="nav-item waves-light user-li" mdbWavesEffect *ngIf="isLoggedIn && !isAdmin">
-                <a class="nav-link border-ryt">
-                  <i class="fa fa-user mr-1"></i>{{user.firstName}} {{user.lastName}}
-                </a>
-              </li>
-
-
-              <li class="nav-link waves-light" mdbWavesEffect routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <!-- <a class="nav-link border-ryt">SHOP</a> -->
-                <!-- (mouseover)="showCartonMouseOver()" -->
-                <a mat-icon-button routerLink="/cart"
-                          aria-labelledby="My Cart"
-                          class="jkts-cart-icon cart-btn nav-link">
-                    <mat-icon [matBadge]="totalItems" matBadgeSize="small">shopping_cart</mat-icon>
-                </a>
-            </li>
-
-          </ul>
+      <div class="HomeLogoDiv col-sm-4">
+        <img src="assets/images/logo_btech.png" height="40px" class="HomeLogo">
+      </div>
+      <div class="HomeNav2 col-sm-4">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown btn-group" dropdown [ngClass]="{'show open':isHidden==false}"
+            (mouseover)="togglePages()" (mouseout)="togglePages()" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+            <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light border-ryt" mdbWavesEffect>
+              Category
+            </a>
+            <div class="dropdown-menu dropdown-animate dropdown-primary dropdown-menu-right" role="menu"
+              [ngClass]="{'fadeInDropdown':isHidden==false}">
+              <a class="dropdown-item" routerLink="/cart">Shopping Cart</a>
+              <a class="dropdown-item" (click)="logout()">Logout</a>
+              <a class="dropdown-item" routerLink="/login">Login</a>
+            </div>
+          </li>
+          <li class="nav-item waves-light user-li" mdbWavesEffect *ngIf="isLoggedIn && isAdmin">
+            <a class="nav-link border-ryt" routerLink="/admin">
+              <i class="fa fa-user mr-1"></i>Welcome Admin
+            </a>
+          </li>
+          <li class="nav-item waves-light user-li" mdbWavesEffect *ngIf="isLoggedIn && !isAdmin">
+            <a class="nav-link border-ryt">
+              <i class="fa fa-user mr-1"></i>{{user.firstName}} {{user.lastName}}
+            </a>
+          </li>
 
 
-      
-      
-      <button mat-icon-button routerLink="/cart"
-        (mouseover)="showCartonMouseOver()"
-        aria-labelledby="My Cart"
-        class="jkts-cart-icon cart-btn d-sm-none">
-        <mat-icon [matBadge]="totalItems" matBadgeSize="small">shopping_cart</mat-icon>
-      </button>
+          <li class="nav-link waves-light" mdbWavesEffect routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+            <!-- <a class="nav-link border-ryt">SHOP</a> -->
+            <!-- (mouseover)="showCartonMouseOver()" -->
+            <a mat-icon-button routerLink="/cart" aria-labelledby="My Cart" class="jkts-cart-icon cart-btn nav-link">
+              <mat-icon [matBadge]="totalItems" matBadgeSize="small">shopping_cart</mat-icon>
+            </a>
+          </li>
 
-  </div>
-  </links>
+        </ul>
+
+
+
+
+        <button mat-icon-button routerLink="/cart" (mouseover)="showCartonMouseOver()" aria-labelledby="My Cart"
+          class="jkts-cart-icon cart-btn d-sm-none">
+          <mat-icon [matBadge]="totalItems" matBadgeSize="small">shopping_cart</mat-icon>
+        </button>
+
+      </div>
+    </links>
   </mdb-navbar>
 
-</div>
-
-
+ </div>
