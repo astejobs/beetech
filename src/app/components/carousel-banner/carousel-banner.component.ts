@@ -7,7 +7,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./carousel-banner.component.scss']
 })
 export class CarouselBannerComponent implements OnInit {
-
+  
   slidesStore = [
     /* {
       id:1,
