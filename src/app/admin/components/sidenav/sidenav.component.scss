@@ -5,14 +5,15 @@
   background-color: #FF9033;
   color: #f0ececde;
 }
+
 .mat-expansion-panel-header-title {
   color: #f0ececde;
 }
 ::ng-deep .mat-expansion-indicator::after {
-  color: #f0ececde !important;
+  color:  #171414 !important;
 }
 ::ng-deep .mat-expansion-panel-body {
-  background-color: #FF9033 !important;
+  background-color: white !important;
 }
 
 .mat-list-item {
@@ -22,3 +23,7 @@
   background-color: rgba(221, 138, 69, 0.938);
   color: aliceblue;
 }
+.items{
+  color:black;
+}
+

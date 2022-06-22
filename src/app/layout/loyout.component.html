@@ -10,14 +10,15 @@
           <a mat-button routerLink="/">Home</a>
           <a mat-button routerLink="/products">Shop</a>
           <a mat-button routerLink="/cart">Cart</a>
+          <a mat-button routerLink="/blog">Blog</a>
           <a mat-button routerLink="/login">login</a>
           <a mat-button (click)="logout()">Log Out</a>
         </div>
     </mat-sidenav>
-   
+
     <mat-sidenav-content appScroll [scrollClass]="'app-navbar-bg'">
       <!--in here all the content must reside. We will add a navigation header as well-->
-      <mat-toolbar class="position-fixed">
+      <mat-toolbar class="position-fixed shadow">
         <div class="d-md-none d-sm-block">
           <button mat-icon-button class="toggle-icon" (click)="sidenav.toggle()" >
             <mat-icon>menu</mat-icon>
@@ -26,14 +27,14 @@
         <div class="d-md-none d-sm-block img-responsive " >
           <img src="assets/images/logo_btech.png" height="40px">
         </div>
-         
+
         <app-navbar (toggle)="toggleSidenav($event)" class="app-navbar-home"></app-navbar>
-        
+
         <!-- <a mat-button class="companyName" routerLink="/">
           <span>Site name</span>
         </a> -->
         <span class="example-spacer"></span>
-       
+
         </mat-toolbar>
      <div class="">
        <router-outlet></router-outlet>

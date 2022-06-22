@@ -19,7 +19,8 @@ import { CategoryComponent } from './components/category/category.component';
 import { AddEditComponent } from './components/category/add-edit.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { PipesModule } from '../shared/modules/shared-module/pipes.module';
-
+import { CreateBlogComponent } from './modules/create-blog/create-blog.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PipesModule } from '../shared/modules/shared-module/pipes.module';
     UnitComponent,
     CategoryComponent,
     AddEditComponent,
-    EditProductComponent
+    EditProductComponent,
+    CreateBlogComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ import { PipesModule } from '../shared/modules/shared-module/pipes.module';
     ReactiveFormsModule,
     MaterialModule,
     ImageCropperModule,
-    PipesModule
+    PipesModule,
+    MatSnackBarModule
 
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

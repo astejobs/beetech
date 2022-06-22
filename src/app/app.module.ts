@@ -6,7 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { YouTubePlayerModule } from "@angular/youtube-player";
 import { JwtInterceptorService } from './shared/services/jwt-interceptor.service';
-
+import { BlogService } from './shared/services/blog.service'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,7 +35,10 @@ import { ScrollEventDirectiveDirective } from './shared/directives/scroll-event-
 import { Section2Component } from './components/section2/section2.component';
 import { Section3Component } from './components/section3/section3.component';
 import { RegisterComponent } from './components/register/register.component';
-
+import { BlogComponent } from './blog/blog.component';
+import { ReadMorePipe } from './shared/pipes/read-more.pipe';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +62,11 @@ import { RegisterComponent } from './components/register/register.component';
     ScrollEventDirectiveDirective,
     Section2Component,
     Section3Component,
-    RegisterComponent
+    RegisterComponent,
+    BlogComponent,
+    ReadMorePipe,
+    DialogComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -75,7 +82,8 @@ import { RegisterComponent } from './components/register/register.component';
     NgMultiSelectDropDownModule.forRoot(),
     YouTubePlayerModule,
     PipesModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule
   ],
   //exports: [ImagePipe],
   providers: [
@@ -83,7 +91,9 @@ import { RegisterComponent } from './components/register/register.component';
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptorService,
       multi: true
-    }
+
+    },
+    BlogService
   ],
   bootstrap: [AppComponent],
   //schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

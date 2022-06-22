@@ -9,6 +9,7 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DemoComponent } from './components/demo/demo.component';
 import { ProductsComponent } from './components/products/products.component';
+import { CreateBlogComponent } from './modules/create-blog/create-blog.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent, pathMatch: 'prefix',
@@ -22,6 +23,7 @@ const routes: Routes = [
         { path: 'unit', component: UnitComponent },
         { path: 'unit/:id', component: UnitComponent },
         { path: 'demo', component: DemoComponent },
+        { path: 'create-blog', component: CreateBlogComponent },
         { path: 'orders', loadChildren: () => import('./modules/orders/orders.module').then(m => m.OrdersModule) }
 
       ]},

@@ -1,4 +1,4 @@
-<div class=" col-sm-12   ">
+<div class=" col-sm-12  ">
   <mdb-navbar SideClass="navbar shadow-none navbar-expand navbar-light text-uppercase" [containerInside]="true">
     <!--  <mdb-navbar-brand>
           <a class="logo navbar-brand" routerLink=""><img src="assets/images/logo_btech.png" alt="" class="jkts-brand" width="150px"></a>
@@ -12,6 +12,9 @@
           </li>
           <li class="nav-item waves-light" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
             <a class="nav-link border-ryt" routerLink="/products">Shop</a>
+          </li>
+          <li class="nav-item waves-light" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link border-ryt" routerLink="/blog">Blog</a>
           </li>
         </ul>
 
@@ -58,17 +61,12 @@
 
         </ul>
 
-
-
-        
-       
-
       </div>
       <button mat-icon-button routerLink="/cart" (mouseover)="showCartonMouseOver()" aria-labelledby="My Cart"
       class="jkts-cart-icon cart-btn d-sm-none float-right">
       <mat-icon [matBadge]="totalItems" matBadgeSize="small">shopping_cart</mat-icon>
     </button>
-  
+
     </links>
   </mdb-navbar>
 

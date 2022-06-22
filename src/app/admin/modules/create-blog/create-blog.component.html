@@ -1,0 +1,41 @@
+<div class="container">
+
+
+  <mat-card>
+    <h4 class="Blog-header my-3 "> {{headingUpdate?'Update Blog':'Post a Blog'}}</h4>
+
+
+    <form  #postForm="ngForm" (ngSubmit)="addPost(postForm)">
+      <mat-form-field class="title">
+        <input type="text"
+        #title="ngModel" required  matInput ngModel name="title" placeholder="Post Title..">
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea name="description" #description="ngModel" required placeholder="Post Content" matInput  ngModel id="" cols="30" rows="10"></textarea>
+      </mat-form-field>
+      <button mat-raised-button
+      color="accent"
+      type="submit">{{editMode?'Update Blog':'Save Blog'}}</button>
+    </form>
+  </mat-card>
+   <h3 class="text-center my-4">Blog List</h3>
+
+   <hr>
+   <mat-accordion multi="true">
+    <mat-expansion-panel *ngFor="let blog of blogs ; index as i">
+      <mat-expansion-panel-header class="title">
+         <h6><strong>{{i+1}}</strong></h6>&nbsp;&nbsp;
+        <h6>{{blog.title | titlecase}}</h6>
+      </mat-expansion-panel-header>
+      <mat-expansion-panel-body >
+      <p class="content ">{{blog.description}}</p>
+    </mat-expansion-panel-body>
+      <mat-action-row>
+    <p class="date">{{blog.blogDate|date:'mediumDate'}}</p>
+    <button mat-raised-button color="accent"(click)="editBlog(blog.id, i)">Edit Blog</button>
+    <button mat-raised-button color="warn" (click)="deletePost(blog.id)">Delete Blog</button>
+  </mat-action-row>
+  </mat-expansion-panel>
+  </mat-accordion>
+  </div>

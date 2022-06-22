@@ -1,0 +1,31 @@
+
+<div class="container  ">
+
+  <h3 class="text-center heading">Blogs </h3>
+  <hr >
+
+  <div class="row ">
+    <div class="col-md-4 card "*ngFor="let blog of blogs">
+    <mat-card class="shadow" >
+      <mat-card-title-group >
+        <mat-card-title>{{blog.title}}</mat-card-title>
+        <mat-card-subtitle>{{blog.blogDate | date:'mediumDate'}}</mat-card-subtitle>
+      </mat-card-title-group>
+      <mat-card-content class="content" #content>
+        {{blog.description |readMore  }}
+      </mat-card-content>
+      <mat-card-footer  class=" pr-4 footer1">
+
+      <button mat-raised-button
+      color="accent"
+      class="mx-2"
+      type="submit" (click)="readMore(blog)">Read More</button>
+
+    </mat-card-footer>
+    </mat-card>
+  </div>
+  </div>
+</div>
+
+
+

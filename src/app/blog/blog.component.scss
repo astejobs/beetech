@@ -1,0 +1,53 @@
+
+
+.heading{
+  margin-top: 100px;
+}
+
+
+.title{
+  width:100%;
+
+}
+.shadow{
+  height:400px;
+  overflow:hidden;
+  margin: 0;
+ // box-shadow: #094c66 4px 4px 0px !important;
+  transition: transform 200ms ,box-shadow 200ms;
+  cursor: pointer;
+
+
+
+
+}
+.blog{
+  margin-top: 0;
+  display: inline-block;
+}
+.card{
+  margin-bottom:8px;
+  height:fit-content;
+  border:none;
+}
+.shadow:hover{
+  transform: translateY(4px) translateX(4px);
+ // box-shadow: #094c66 0px 0px 0px !important;
+}
+.footer1 {
+  position: absolute;
+   bottom: 27px;
+   width: 100%;
+   z-index: 1;
+
+
+
+   }
+hr{
+  height:2px;
+  border-width:0;
+  color:gray;
+  background-color:gray;
+}
+
+
