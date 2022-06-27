@@ -9,4 +9,26 @@ hr{
   color:gray;
   background-color:gray;
 }
+//scroll
+#myBtn {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 30px;
+  border-radius: 50% !important;
+  background-color:lightgray;
+  color: black;
+  //outline: 1px solid black;
+  box-shadow: 1px 0px 15px inset;
+  cursor: pointer;
+  padding: 8px;
+  width: 46px;
+  height: 50px;
+}
 
+#myBtn:hover {
+  background-color:white;
+  color: black;
+}

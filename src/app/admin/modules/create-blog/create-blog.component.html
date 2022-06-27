@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" >
 
 
-  <mat-card>
+  <mat-card #scrol>
     <h4 class="Blog-header my-3 "> {{headingUpdate?'Update Blog':'Post a Blog'}}</h4>
 
 
@@ -33,9 +33,13 @@
     </mat-expansion-panel-body>
       <mat-action-row>
     <p class="date">{{blog.blogDate|date:'mediumDate'}}</p>
-    <button mat-raised-button color="accent"(click)="editBlog(blog.id, i)">Edit Blog</button>
-    <button mat-raised-button color="warn" (click)="deletePost(blog.id)">Delete Blog</button>
+    <button mat-raised-button color="accent" title="Edit"  (click)="editBlog(blog.id, i)"><i class="fas fa-edit" (click)="gotoTop()"></i></button>
+    <button mat-raised-button color="warn"  title="Delete"  (click)="deletePost(blog.id)"><i class="fas fa-trash"></i></button>
   </mat-action-row>
   </mat-expansion-panel>
   </mat-accordion>
+
+
+  <!-- <mat-icon (click)="topFunction()" id="myBtn" title="Go to top">unfold_more</mat-icon> -->
+
   </div>

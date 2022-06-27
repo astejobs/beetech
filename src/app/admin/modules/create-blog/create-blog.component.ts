@@ -1,9 +1,7 @@
-import { identifierModuleUrl } from '@angular/compiler';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BlogService } from 'src/app/shared/services/blog.service';
-
 @Component({
   selector: 'app-create-blog',
   templateUrl: './create-blog.component.html',
@@ -13,8 +11,13 @@ export class CreateBlogComponent implements OnInit {
 
   @ViewChild('title', { read: ElementRef }) tile: ElementRef;
   @ViewChild('description', { read: ElementRef }) descr: ElementRef;
+  @ViewChild('scrol') scrol: ElementRef;
 
-  constructor(private blogService: BlogService, public snackbar: MatSnackBar) { }
+  constructor(private blogService: BlogService,
+              public snackbar: MatSnackBar,
+
+
+              ) { }
   users: any;
   blogs: any;
   Result: any;
@@ -31,6 +34,7 @@ export class CreateBlogComponent implements OnInit {
   ngOnInit(): void {
     this.blogService.getBlog().subscribe(rslt => {
       this.blogs = rslt;
+
 
     })
   }
@@ -81,8 +85,6 @@ export class CreateBlogComponent implements OnInit {
     //   this.Result=res;
     //   this.tile.nativeElement.value=this.Result.title;
     //   this.descr.nativeElement.value=this.Result.description;
-
-
     // })
 
     this.editUserId = userId;
@@ -105,6 +107,13 @@ export class CreateBlogComponent implements OnInit {
       })
     }
   }
+gotoTop(){
+  console.log("scrolling...");
+  console.log(window.scrollY);
+
+
+}
+
 }
 
 
