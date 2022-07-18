@@ -53,7 +53,8 @@ export class ProductsComponent implements OnInit {
   getProducts() {
     this.productService.getAll().subscribe(
       res => {
-        this.products = res; console.log(this.products);
+        this.products = res;
+        console.log(this.products);
         this.dataSource = new MatTableDataSource(this.products);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

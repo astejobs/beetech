@@ -88,7 +88,7 @@
             </span>
           </div>
           <div class="form-group">
-            <button mat-raised-button color="warn" class="btn-block" (click)="onCheckOut()">
+            <button mat-raised-button color="warn" class="btn-block" (click)="onCheckOut($event)">
               <mat-icon>shopping_cart_checkout</mat-icon>
               Checkout
             </button>
@@ -107,10 +107,10 @@
 <!-- IF CART IS EMPTY -->
 <div class="container mt-100" *ngIf="!hasItems">
   <div class="row mb-3">
-    <div class="col-sm-12 col-md-6 offset-md-3 mat-elevation-z10">
+    <div class="col-sm-12 col-md-6 offset-md-3 mat-elevation-z10 ">
       <div class="text-center">
         <img src="https://www.kindpng.com/picc/m/174-1749396_empty-cart-your-cart-is-empty-hd-png.png" alt="" srcset="" class="img-fluid">
-        <button mat-raised-button color="accent" class="" [routerLink]="['/products']">
+        <button mat-raised-button color="accent" class="btn " [routerLink]="['/products']">
           <mat-icon>store</mat-icon>
           Shop Now
         </button>

@@ -2,6 +2,10 @@
   box-shadow: none !important;
   font-family: Montserrat;
 }
+.dropdown-toggle{
+  margin-left: -29px;
+}
+
 
 
 ::ng-deep .my-nav .nav-link {
@@ -49,7 +53,7 @@
   // background: url("../../../assets/images/menu-bg.png"), linear-gradient(rgb(255, 255, 255,0), rgb(255, 255, 255,0));
   border: 0px;
   border-radius: 0px;
-  perspective: 1000px
+  perspective: 1000px;
 
 }
 ::ng-deep .navbar .dropdown-menu a:hover{
@@ -74,7 +78,7 @@ transform:  rotateY(360deg);
 ::ng-deep .dropdown-item:hover {
   color: #fff !important;
   background: none !important;
-  
+
   /* background-color: #EBA937; */
   /* background-color: rgba(255, 255, 255, 0.411); */
 }
@@ -236,15 +240,15 @@ transform:  rotateY(360deg);
     //   display:none;
     // }
     .HomeLogoDiv{
-      
+
     margin-left: 0 !important;
     margin-top: 8px;
     width: 100px;
     height: auto;
 }
     }
-  
-  
+
+
  @media only screen and (min-width: 600px) {
     .show-mobile {
       display:block;
@@ -254,7 +258,7 @@ transform:  rotateY(360deg);
   .LinksHome
   {
     width:100% !important;
-    
+
   }
 
   .user-li a{
@@ -272,7 +276,7 @@ transform:  rotateY(360deg);
 }
 .HomeLogoDiv{
   float:left;
- 
+
 
 }
 .HomeLogoDiv img{

@@ -1,25 +1,28 @@
 <div class="form-group">
   <!-- Default inline 1-->
   <div class="custom-control custom-radio custom-control-inline">
-    <input type="radio" [value]="isPayOnline" class="custom-control-input" id="defaultInline1" name="payMode" (click)="payOnline()">
+    <input type="radio" [value]="isPayOnline" class="custom-control-input" id="defaultInline1" name="payMode"
+      (click)="payOnline()">
     <label class="custom-control-label" for="defaultInline1">Pay Online</label>
   </div>
 
   <!-- Default inline 2-->
   <div class="custom-control custom-radio custom-control-inline">
-    <input type="radio" [value]="isCOD" class="custom-control-input" id="defaultInline2" name="payMode" (click)="payOffline()">
+    <input type="radio" [value]="isCOD" class="custom-control-input" id="defaultInline2" name="payMode"
+      (click)="payOffline()">
     <label class="custom-control-label" for="defaultInline2">Cash On Delivery</label>
   </div>
 </div>
-<button (click)="isCOD= !isCOD">Cash On Delivery</button>
+<!-- <button (click)="isCOD= !isCOD">Cash On Delivery</button> -->
 <div *ngIf="isCOD">
   <p class="lead">Cash On Delivery Selected</p>
 </div>
-<div class="container-fluid" *ngIf="!isCOD">
-  <button type="submit"  class="btn btn-success btn-block" (click)="pay()">
+<div class="container-fluid" *ngIf="switch">
+  <button type="submit" class="btn btn-success btn-block col-lg-3 mt-3 float-right " (click)="pay()">
     <mat-icon>shopping_cart_checkout</mat-icon>
-    Make Payment Online
+    {{isPayOnline?"Make Payment Online":"Place Order"}}
   </button>
+
 
   <!-- <h4 class="form-group">Payment</h4>
 
@@ -77,5 +80,3 @@
   <mat-icon>shopping_cart_checkout</mat-icon>
   Place Order
 </button> -->
-
-

@@ -35,7 +35,7 @@ export class OrderSearchComponent implements OnInit, OnDestroy {
    totalRecords = 0;
    pageSize = 5;
    currentPage = 0;
-   pageSizeOptions: number[] = [5, 10];
+   pageSizeOptions: number[] = [5, 10,25];
 
    // MatPaginator Output
    pageEvent: PageEvent;
@@ -62,8 +62,18 @@ export class OrderSearchComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const ordersearch = new OrderSearch();
     this.getOrders(ordersearch);
-  }
+    this.getAllOrders();
 
+  }
+  getAllOrders(){
+  this.orderService.getorders().subscribe((res)=>{
+    this.orders = res;
+    this.dataSource=new MatTableDataSource(this.orders);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    console.log(this.orders);
+  })
+}
   // convenience getter for easy access to form fields
    get f() { return this.orderSearchForm.controls; }
 
@@ -74,6 +84,7 @@ export class OrderSearchComponent implements OnInit, OnDestroy {
   }
 
   getOrders(orderSearch: OrderSearch) {
+
     this.subs.push(this.orderService.getOrders(orderSearch).subscribe(
       res => {
         this.orders = res.orders;
@@ -98,6 +109,7 @@ export class OrderSearchComponent implements OnInit, OnDestroy {
 
   getOrderForUpdate(order: Order) {
     console.log(order);
+
   }
 
   public handlePage(e: any) { console.log(e);

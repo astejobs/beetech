@@ -24,11 +24,11 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 export class CheckoutComponent implements OnInit {
   @ViewChild('stepper') private myStepper: MatStepper;
 
-  basket: Basket= new Basket();
+  basket: Basket = new Basket();
   totalItems: number = 0;
   grandTotal: number = 0;
   hasItems: boolean = false;
-  subs: Subscription[]= [];
+  subs: Subscription[] = [];
 
   phoneNumber: any;
   otpRequest: SmsRequest = new SmsRequest();
@@ -41,9 +41,9 @@ export class CheckoutComponent implements OnInit {
   otpVerificationDone: boolean = true;
   otp: string;
   showOtpComponent = false;
-  @ViewChild('ngOtpInput', { static: false}) ngOtpInput: any;
+  @ViewChild('ngOtpInput', { static: false }) ngOtpInput: any;
   @ViewChild('AddressComponent') addressComp: AddressComponent;
-  config :Config = {
+  config: Config = {
     allowNumbersOnly: false,
     length: 5,
     isPasswordInput: false,
@@ -56,12 +56,12 @@ export class CheckoutComponent implements OnInit {
   };
 
   constructor(private cartService: CartService,
-              private router: Router,
-              private formBuilder: FormBuilder,
-              private optService: OtpService,
-              private toastr: ToastrService,
-              private authService: AuthenticationService,
-              private orderService: OrderService) { }
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private optService: OtpService,
+    private toastr: ToastrService,
+    private authService: AuthenticationService,
+    private orderService: OrderService) { }
 
   ngOnInit(): void {
     this.getBasket();
@@ -70,27 +70,28 @@ export class CheckoutComponent implements OnInit {
 
   getBasket() {
     this.subs.push(this.cartService.getProducts()
-    .subscribe(basket => {
-      if(basket != null) { console.log("bbbbbbbb")
-        this.basket = basket;
-        if(this.basket.basketItems) {
+      .subscribe(basket => {
+        if (basket != null) {
+          console.log("bbbbbbbb")
+          this.basket = basket;
+          if (this.basket.basketItems) {
+            this.totalItems = 0;
+            this.grandTotal = 0;
+            this.basket.basketItems.forEach(item => {
+              this.totalItems += item.quantity;
+              this.grandTotal += (item.product.price) * (item.quantity);
+            });
+            this.hasItems = true;
+          } console.log("Total" + this.grandTotal);
+        } else {
           this.totalItems = 0;
-          this.grandTotal = 0;
-          this.basket.basketItems.forEach(item => {
-            this.totalItems += item.quantity;
-            this.grandTotal += (item.product.price)*(item.quantity);
-          });
-          this.hasItems = true;
-        } console.log("Total"+ this.grandTotal);
-      } else {
-        this.totalItems = 0;
-      }
-    }));
+        }
+      }));
   }
 
   hasLoggedIn() {
     const account = this.authService.currentUserValue;
-    if(account?.token) {
+    if (account?.token) {
       this.isLoggedIn = true;
     } else {
       this.isLoggedIn = false;
@@ -98,46 +99,46 @@ export class CheckoutComponent implements OnInit {
   }
 
   getOTP() {
-    this.otpRequest.phoneNumber="+91"+this.phoneNumber;
+    this.otpRequest.phoneNumber = "+91" + this.phoneNumber;
     console.log(this.otpRequest);
     this.subs.push(
       this.optService.getOtp(this.otpRequest)
-      .subscribe(res => {
-        console.log(res);
-        this.toastr.success('OTP Sent Successfully', 'OTP SENT', {
-          timeOut: 1000,
-        });
-        this.showOtpComponent = true;
-      },
-      error => {
-        console.log(error);
-        this.toastr.error('OTP not Sent', 'Warning', {
-          timeOut: 1000,
-        });
-      })
+        .subscribe(res => {
+          console.log(res);
+          this.toastr.success('OTP Sent Successfully', 'OTP SENT', {
+            timeOut: 1000,
+          });
+          this.showOtpComponent = true;
+        },
+          error => {
+            console.log(error);
+            this.toastr.error('OTP not Sent', 'Warning', {
+              timeOut: 1000,
+            });
+          })
     );
   }
   onOtpChange(otp) {
-    if(otp.length == 5) {
+    if (otp.length == 5) {
       const verifyOtpRequest: VerifyOtp = new VerifyOtp();
       verifyOtpRequest.otp = otp;
       verifyOtpRequest.phoneNumber = this.phoneNumber;
 
       this.subs.push(
         this.optService.verifyOtp(verifyOtpRequest)
-        .subscribe(res => {
-          this.toastr.success('Number Vefified Successfully', 'Verified!', {
-            timeOut: 1000,
-          });
-          this.otpVerificationDone = true;
-          this.showOtpComponent = false;
-        },
-        error => {
-          console.log(error);
-          this.toastr.error('Number not Verified', 'Try Again', {
-            timeOut: 1000,
-          });
-        })
+          .subscribe(res => {
+            this.toastr.success('Number Vefified Successfully', 'Verified!', {
+              timeOut: 1000,
+            });
+            this.otpVerificationDone = true;
+            this.showOtpComponent = false;
+          },
+            error => {
+              console.log(error);
+              this.toastr.error('Number not Verified', 'Try Again', {
+                timeOut: 1000,
+              });
+            })
       );
     }
   }
@@ -145,25 +146,26 @@ export class CheckoutComponent implements OnInit {
   setVal(val) {
     this.ngOtpInput.setValue(val);
   }
-  onCheckOut() {
+  onCheckOut(e) {
     console.log("Processing Checkout...");
+
     this.router.navigate(['/cart/checkout']);
   }
 
   onVerify(user) {
-    if(user.id) {
+    if (user.id) {
       this.isLoggedIn = true;
       this.cartService.isLoggedIn = true;
       this.subs.push(this.cartService.getUserBasket(user.id)
         .subscribe(basket => {
           this.cartService.synchroniseCart(basket);
-      }));
+        }));
       this.addressComp.getAddesses();
     }
 
     setTimeout(() => {
       this.myStepper.next();
-     }, 1);
+    }, 1);
   }
 
   onAddAddress(address: Address) {
@@ -172,24 +174,30 @@ export class CheckoutComponent implements OnInit {
     this.selectedAddress = address;
     setTimeout(() => {           // or do some API calls/ Async events
       this.myStepper.next();
-     }, 1);
+    }, 1);
   }
 
   placeOrder(e) {
-    console.log(e);
-    if(e) {
+    console.log(e,"");
+    if (e) {
       console.log(this.selectedAddress);
       const order: Order = new Order();
       order.address = this.selectedAddress;
       order.paymentMode = 'Offline';
-      console.log("placeing order...");
+      console.log("placing order...");
       console.log(order);
       this.subs.push(this.orderService.saveOrder(order)
-      .subscribe(res => {
+        .subscribe(res => {
+          this.toastr.success('Order placed  Successfully', 'Successfull!', {
+            timeOut: 3000,
+          });
           this.clearBasket();
-          console.log(res);
-      }));
+          console.log(res.message);
+          this.router.navigate(['/products']);
+        }));
+
     }
+
   }
 
   clearBasket() {
@@ -204,9 +212,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-      this.subs.forEach(sub => {
-        sub.unsubscribe();
-      });
+    this.subs.forEach(sub => {
+      sub.unsubscribe();
+    });
   }
 
 

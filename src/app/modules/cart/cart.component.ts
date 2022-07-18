@@ -18,6 +18,8 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserBasket();
+
+
   }
  getUserBasket() {
    const account = this.authService.currentUserValue;

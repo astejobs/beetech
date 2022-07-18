@@ -21,4 +21,5 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
 }

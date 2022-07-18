@@ -28,17 +28,11 @@ export class BlogComponent implements OnInit {
     //this.showLess = blog.description.substring(450, blog.description.length);
     this.dialog.open(DialogComponent,{
       data:blog,
-
     });
-
-
   }
-
   SortData(){
     return this.blogs.sort((a, b) => {
       return <any>new Date(b.blogDate) - <any>new Date(a.blogDate);
     });
   }
-
-
 }

@@ -18,6 +18,7 @@ import { catchError } from 'rxjs/internal/operators/catchError';
 export class WebRequestService {
 
   readonly ROOT_URL = environment.BASE_URL;
+
   //readonly ROOT_URL = '';
   url=null;
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
@@ -188,5 +189,8 @@ export class WebRequestService {
     console.log(this.url);
     return this.http.post<any>(this.url, orderSearch);//, {headers: this.headers}
   }
-
+  getorders(){
+    this.url=this.ROOT_URL+"/orders";
+    return this.http.get<any>(this.url);
+  }
 }

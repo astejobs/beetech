@@ -29,4 +29,7 @@ export class OrderService {
   getPageOrders(orderSearch: OrderSearch) {
     return this.apiService.getPageOrders(orderSearch);
   }
+  getorders(){
+    return this.apiService.getorders();
+  }
 }
