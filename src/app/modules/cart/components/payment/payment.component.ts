@@ -48,7 +48,9 @@ export class PaymentComponent implements OnInit {
     "callback_url": "http://localhost:4200/",
     "handler": (response) => {
       this.onPlace.emit(response.razorpay_payment_id);
+      this.Responsemessage(response);
       console.log(response.razorpay_payment_id);
+
 
     },
     "prefill": {
@@ -124,6 +126,12 @@ export class PaymentComponent implements OnInit {
     console.log(id);
 
   }
+  Responsemessage(response){
+    this.toastr.success('Your Payment Is Successfull', "Payment Id:"+response.razorpay_payment_id, {
+      timeOut: 5000,
+
+  });
+}
 
 
   // redirectToPaytm(parameters: any) {
