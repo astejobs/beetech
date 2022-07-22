@@ -6,7 +6,7 @@ import { VerifyOtp } from './../../../../shared/classes/verify-otp';
 import { SmsRequest } from './../../../../shared/classes/sms-request';
 import { ToastrService } from 'ngx-toastr';
 import { OtpService } from './../../../../shared/services/otp.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
@@ -29,7 +29,7 @@ export class CheckoutComponent implements OnInit {
   grandTotal: number = 0;
   hasItems: boolean = false;
   subs: Subscription[] = [];
-
+orderidd;
   phoneNumber: any;
   otpRequest: SmsRequest = new SmsRequest();
   isLoggedIn: boolean;
@@ -83,6 +83,7 @@ export class CheckoutComponent implements OnInit {
             });
             this.hasItems = true;
           } console.log("Total" + this.grandTotal);
+
         } else {
           this.totalItems = 0;
         }
@@ -177,13 +178,16 @@ export class CheckoutComponent implements OnInit {
     }, 1);
   }
 
-  placeOrder(e) {
-    console.log(e,"");
-    if (e) {
+  placeOrder(paymentId) {
+    console.log(paymentId, "");
+    if (!paymentId) {
       console.log(this.selectedAddress);
       const order: Order = new Order();
       order.address = this.selectedAddress;
+      this.generateOrderId();
+      order.orderId=this.orderidd;
       order.paymentMode = 'Offline';
+      order.paymentStatus = 'not_paid';
       console.log("placing order...");
       console.log(order);
       this.subs.push(this.orderService.saveOrder(order)
@@ -196,9 +200,35 @@ export class CheckoutComponent implements OnInit {
           this.router.navigate(['/products']);
         }));
 
+
     }
 
+    else if (paymentId) {
+
+      console.log(this.selectedAddress);
+      const order: Order = new Order();
+      order.address = this.selectedAddress;
+      order.paymentMode = 'online';
+      order.paymentStatus = "paid";
+      order.paymentResponse = paymentId;
+      console.log("placing order...");
+      console.log(order);
+      this.subs.push(this.orderService.saveOrder(order)
+        .subscribe(res => {
+          this.toastr.success('Order placed  Successfully', 'Successfull!', {
+            timeOut: 3000,
+          });
+          this.clearBasket();
+          console.log(res.message);
+          this.router.navigate(['/products']);
+
+        }));
+
+
+    }
   }
+
+
 
   clearBasket() {
     localStorage.setItem('basket', null);
@@ -215,6 +245,11 @@ export class CheckoutComponent implements OnInit {
     this.subs.forEach(sub => {
       sub.unsubscribe();
     });
+  }
+  generateOrderId(){
+    this.orderidd = "ord_" + Math.random().toString(16).slice(2)
+    console.log(this.orderidd);
+
   }
 
 

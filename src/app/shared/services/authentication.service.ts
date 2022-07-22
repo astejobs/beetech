@@ -4,11 +4,17 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserInfo } from '../classes/UserInfo';
 import { WebRequestService } from './web-request.service';
-
+function _window() : any {
+  return window;
+}
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+
+  get nativeWindow() : any {
+    return _window();
+ }
   private currentUserSubject: BehaviorSubject<UserInfo>;
   public currentUser: Observable<UserInfo>;
 

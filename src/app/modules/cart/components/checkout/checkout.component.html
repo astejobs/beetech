@@ -44,7 +44,7 @@
             </mat-step>
 
             <mat-step label="Payment" state="payment" [editable]="isEditable">
-              <app-payment (onPlace)="placeOrder($event)"></app-payment>
+              <app-payment (onPlace)="placeOrder($event)" [grandtotal]="grandTotal"></app-payment>
                <!-- <div>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button (click)="stepper.reset()">Reset</button>
