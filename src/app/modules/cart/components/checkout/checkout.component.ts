@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs';
 import { Basket } from 'src/app/shared/classes/Basket';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-input-base';
 
 @Component({
   selector: 'app-checkout',
@@ -29,7 +30,7 @@ export class CheckoutComponent implements OnInit {
   grandTotal: number = 0;
   hasItems: boolean = false;
   subs: Subscription[] = [];
-orderidd;
+  orderidd:string;
   phoneNumber: any;
   otpRequest: SmsRequest = new SmsRequest();
   isLoggedIn: boolean;
@@ -185,7 +186,9 @@ orderidd;
       const order: Order = new Order();
       order.address = this.selectedAddress;
       this.generateOrderId();
-      order.orderId=this.orderidd;
+      let ftDate=this.getDate();
+      order.deliveredDate=ftDate;
+      order.orderId = this.orderidd;
       order.paymentMode = 'Offline';
       order.paymentStatus = 'not_paid';
       console.log("placing order...");
@@ -193,7 +196,7 @@ orderidd;
       this.subs.push(this.orderService.saveOrder(order)
         .subscribe(res => {
           this.toastr.success('Order placed  Successfully', 'Successfull!', {
-            timeOut: 3000,
+            timeOut: 5000,
           });
           this.clearBasket();
           console.log(res.message);
@@ -208,6 +211,8 @@ orderidd;
       console.log(this.selectedAddress);
       const order: Order = new Order();
       order.address = this.selectedAddress;
+      let ftDate=this.getDate();
+      order.deliveredDate=ftDate;
       order.paymentMode = 'online';
       order.paymentStatus = "paid";
       order.paymentResponse = paymentId;
@@ -216,7 +221,7 @@ orderidd;
       this.subs.push(this.orderService.saveOrder(order)
         .subscribe(res => {
           this.toastr.success('Order placed  Successfully', 'Successfull!', {
-            timeOut: 3000,
+            timeOut: 5000,
           });
           this.clearBasket();
           console.log(res.message);
@@ -226,6 +231,12 @@ orderidd;
 
 
     }
+  }
+  getDate(){
+    let future = new Date();
+    future.setDate(future.getDate() + 17);
+    console.log(future);
+    return future;
   }
 
 
@@ -246,7 +257,7 @@ orderidd;
       sub.unsubscribe();
     });
   }
-  generateOrderId(){
+  generateOrderId() {
     this.orderidd = "ord_" + Math.random().toString(16).slice(2)
     console.log(this.orderidd);
 

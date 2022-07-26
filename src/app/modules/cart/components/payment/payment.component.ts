@@ -127,8 +127,11 @@ export class PaymentComponent implements OnInit {
 
   }
   Responsemessage(response){
-    this.toastr.success('Your Payment Is Successfull', "Payment Id:"+response.razorpay_payment_id, {
-      timeOut: 5000,
+
+    this.toastr.info( 'PayId:'+response.razorpay_payment_id,'Your Payment Is Successfull', {
+      timeOut: 7000,
+      positionClass:'toast-top-right',
+      closeButton	:true
 
   });
 }

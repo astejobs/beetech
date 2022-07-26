@@ -17,6 +17,7 @@ export class CreateBlogComponent implements OnInit {
               public snackbar: MatSnackBar,
 
 
+
               ) { }
   users: any;
   blogs: any;
@@ -80,7 +81,6 @@ export class CreateBlogComponent implements OnInit {
   }
   editBlog(userId, index) {
     this.editMode = true;
-
     //   this.blogService.getblog(userId).subscribe((res)=>{
     //   this.Result=res;
     //   this.tile.nativeElement.value=this.Result.title;

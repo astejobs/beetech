@@ -39,6 +39,8 @@ import { BlogComponent } from './blog/blog.component';
 import { ReadMorePipe } from './shared/pipes/read-more.pipe';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+
 
 @NgModule({
   declarations: [
@@ -66,6 +68,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     BlogComponent,
     ReadMorePipe,
     DialogComponent,
+    MyOrdersComponent,
 
   ],
   imports: [
@@ -83,7 +86,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     YouTubePlayerModule,
     PipesModule,
     RouterModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   //exports: [ImagePipe],
   providers: [

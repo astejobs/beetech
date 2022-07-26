@@ -34,6 +34,8 @@
             <div class="dropdown-menu dropdown-animate dropdown-primary dropdown-menu-right" role="menu"
               [ngClass]="{'fadeInDropdown':isHidden==false}">
               <a class="dropdown-item" routerLink="/cart">Shopping Cart</a>
+              <a class="dropdown-item" routerLink="/myorders">My Orders</a>
+
               <a class="dropdown-item" (click)="logout()">Logout</a>
               <a class="dropdown-item" routerLink="/login">Login</a>
             </div>
