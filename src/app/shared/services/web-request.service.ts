@@ -183,6 +183,11 @@ export class WebRequestService {
     this.url = this.ROOT_URL+"/order/search";
     return this.http.post<any>(this.url, orderSearch);//, {headers: this.headers}
   }
+  getOrderss(id:any)
+  {
+    this.url=this.ROOT_URL+"/order/orderz/"+id;
+    return this.http.get<any>(this.url);
+  }
 
   getPageOrders(orderSearch: OrderSearch) {
     this.url = this.ROOT_URL+"/order/getPage/";
@@ -191,6 +196,10 @@ export class WebRequestService {
   }
   getorders(){
     this.url=this.ROOT_URL+"/orders";
+    return this.http.get<any>(this.url);
+  }
+  getbasket(id){
+    this.url=this.ROOT_URL+"/basket/basketz/"+id;
     return this.http.get<any>(this.url);
   }
 }

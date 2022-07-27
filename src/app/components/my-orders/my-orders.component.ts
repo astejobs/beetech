@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -37,8 +38,14 @@ export class MyOrdersComponent implements OnInit {
    constructor( private orderService:OrderService) { }
 
     ngOnInit(): void {
-    this.getAllOrders();
+    let currentuser=JSON.parse(localStorage.getItem('currentUser'));
+    let userIdd=currentuser.user.id;
+    this.getAllOrders(userIdd);
     this.fetching=true;
+    // this.orderService.getbasket(userIdd).subscribe(res=>{
+    //     console.log(res.totalPrice);
+    // });
+
 
   }
   public handlePage(e: any) { console.log(e);
@@ -54,8 +61,8 @@ export class MyOrdersComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  getAllOrders(){
-    this.orderService.getorders().subscribe((res)=>{
+  getAllOrders(id){
+    this.orderService.getOrderss(id).subscribe((res)=>{
       this.orders = res;
       this.fetching=false;
       this.dataSource=new MatTableDataSource(this.orders);
@@ -68,4 +75,5 @@ export class MyOrdersComponent implements OnInit {
     console.log(order);
 
   }
+
 }

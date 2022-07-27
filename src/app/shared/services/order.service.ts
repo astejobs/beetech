@@ -32,4 +32,12 @@ export class OrderService {
   getorders(){
     return this.apiService.getorders();
   }
+  getOrderss(id:number){
+    return this.apiService.getOrderss(id);
+
+  }
+  getbasket(id){
+    return this.apiService.getbasket(id);
+
+  }
 }

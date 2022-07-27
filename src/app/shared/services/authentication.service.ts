@@ -32,6 +32,7 @@ login(username: string, password: string) {
    const uri = "authenticate";
     return this.apiService.login(uri,username,password)
         .pipe(map(user => {
+          console.log(user);
             // login successful if there's a jwt token in the response
             if (user && user.token) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
