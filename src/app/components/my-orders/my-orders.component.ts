@@ -68,7 +68,7 @@ export class MyOrdersComponent implements OnInit {
       this.dataSource=new MatTableDataSource(this.orders);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(this.orders);
+      //console.log(this.orders);
     })
   }
   getOrderForUpdate(order: Order) {
