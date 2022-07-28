@@ -1,10 +1,11 @@
 import { JsonPipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { AddEditComponent } from 'src/app/admin/components/category/add-edit.component';
 import { Order } from 'src/app/shared/classes/order';
@@ -23,32 +24,36 @@ export class MyOrdersComponent implements OnInit {
   orderSearchForm: FormGroup;
   dialogRef: MatDialogRef<ConfirmDialogComponent>;
 
-   // MatPaginator Inputs
-   totalRecords = 0;
-   pageSize = 5;
-   currentPage = 0;
-   pageSizeOptions: number[] = [5, 10,25];
-   displayedColumns: string[] = ['id', 'orderedDate', 'deliveredDate', 'orderStatus', 'paymentStatus', 'address', 'items', 'action'];
+  // MatPaginator Inputs
+  totalRecords = 0;
+  pageSize = 5;
+  currentPage = 0;
+  pageSizeOptions: number[] = [5, 10, 25];
+  displayedColumns: string[] = ['id', 'orderedDate', 'deliveredDate', 'orderStatus', 'paymentStatus', 'address', 'items', 'action'];
 
-   // MatPaginator Output
-   pageEvent: PageEvent;
-   dataSource: any;
-   orders: any;
-   fetching =false;
-   constructor( private orderService:OrderService) { }
+  // MatPaginator Output
+  pageEvent: PageEvent;
+  dataSource: any;
+  orders: any;
+  fetching = false;
+  constructor(private orderService: OrderService,
+    private toastr: ToastrService,
+    public dialog: MatDialog) { }
 
-    ngOnInit(): void {
-    let currentuser=JSON.parse(localStorage.getItem('currentUser'));
-    let userIdd=currentuser.user.id;
+
+  ngOnInit(): void {
+    let currentuser = JSON.parse(localStorage.getItem('currentUser'));
+    let userIdd = currentuser.user.id;
     this.getAllOrders(userIdd);
-    this.fetching=true;
+    this.fetching = true;
     // this.orderService.getbasket(userIdd).subscribe(res=>{
     //     console.log(res.totalPrice);
     // });
 
 
   }
-  public handlePage(e: any) { console.log(e);
+  public handlePage(e: any) {
+    console.log(e);
     this.currentPage = e.pageIndex;
     this.pageSize = e.pageSize;
     //this.getPageData();
@@ -61,24 +66,40 @@ export class MyOrdersComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  getAllOrders(id){
-    this.orderService.getOrderss(id).subscribe((res)=>{
+  getAllOrders(id) {
+    this.orderService.getOrderss(id).subscribe((res) => {
       this.orders = res;
-      this.fetching=false;
-      this.dataSource=new MatTableDataSource(this.orders);
+      this.fetching = false;
+      this.dataSource = new MatTableDataSource(this.orders);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       //console.log(this.orders);
     })
   }
   getOrderForUpdate(order: Order) {
-    console.log("cancel order...",order);
-    order.status="cancelled";
-    this.orderService.updateOrder(order).subscribe(res=>{
-      console.log(res);
-
+    this.dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      disableClose: false
     });
+    this.dialogRef.componentInstance.confirmMessage = "Are you sure you want to Cancel this Order?"
+    this.dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // do confirmation actions
+        order.status="cancelled"
+        this.orderService.updateOrder(order).subscribe(res => {
+          console.log(res);
 
+          this.dialogRef = null;
+        });
+      }
+    });
   }
 
-}
+
+
+    // console.log("cancel order...",order);
+    // order.status="cancelled";
+    // this.orderService.updateOrder(order).subscribe(res=>{
+    //   console.log(res);
+
+    // });
+  }

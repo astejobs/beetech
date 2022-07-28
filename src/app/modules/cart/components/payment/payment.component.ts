@@ -4,7 +4,7 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { BasketItem } from 'src/app/shared/classes/BasketItem';
 import { Basket } from 'src/app/shared/classes/Basket';
 
@@ -30,6 +30,7 @@ export class PaymentComponent implements OnInit {
     private auth: AuthenticationService,
     private router: Router,
     private toastr: ToastrService,
+    private dialog: MatDialog
 
   ) { }
 
@@ -98,13 +99,20 @@ export class PaymentComponent implements OnInit {
     // }
 
     if (this.isPayOnline == false) {
-      if (confirm("Do you really want to place this order")) {
-        this.onPlaceOrder();
-      }
+      this.dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        disableClose: false
+      });
+      this.dialogRef.componentInstance.confirmMessage = "Are you sure you want to Place  this Order?"
+      this.dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.onPlaceOrder();
+        }
+        this.dialogRef = null;
+      });
     }
     else if (this.isPayOnline == true) {
       this.generateOrderId();
-      this.options.amount=this.grandtotal;
+      this.options.amount = this.grandtotal;
       this.rzp1 = new this.auth.nativeWindow.Razorpay(this.options);
       this.rzp1.open();
 
@@ -119,22 +127,22 @@ export class PaymentComponent implements OnInit {
     //     console.log(res);
     //   })
   }
-  generateOrderId(){
-    this.grandtotal=this.grandtotal*100;
+  generateOrderId() {
+    this.grandtotal = this.grandtotal * 100;
     console.log(this.grandtotal);
     let id = "ord_" + Math.random().toString(16).slice(2)
     console.log(id);
 
   }
-  Responsemessage(response){
+  Responsemessage(response) {
 
-    this.toastr.info( 'PayId:'+response.razorpay_payment_id,'Your Payment Is Successfull', {
+    this.toastr.info('PayId:' + response.razorpay_payment_id, 'Your Payment Is Successfull', {
       timeOut: 7000,
-      positionClass:'toast-top-right',
-      closeButton	:true
+      positionClass: 'toast-top-right',
+      closeButton: true
 
-  });
-}
+    });
+  }
 
 
   // redirectToPaytm(parameters: any) {
