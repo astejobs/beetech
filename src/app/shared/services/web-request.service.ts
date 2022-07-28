@@ -154,6 +154,10 @@ export class WebRequestService {
     this.url = this.ROOT_URL+"/order";
     return this.http.post<any>(this.url, order);//, {headers: this.headers}
   }
+  updateOrder(order: Order) {
+    this.url = this.ROOT_URL+"/order/update";
+    return this.http.post<any>(this.url, order);//, {headers: this.headers}
+  }
 
   makePayment(paymentRequest: any) {
     this.url = this.ROOT_URL+"/pgredirect";

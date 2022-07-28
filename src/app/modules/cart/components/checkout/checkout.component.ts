@@ -149,7 +149,7 @@ export class CheckoutComponent implements OnInit {
     this.ngOtpInput.setValue(val);
   }
   onCheckOut(e) {
-    console.log("Processing Checkout...");
+    console.log(e);
 
     this.router.navigate(['/cart/checkout']);
   }
@@ -189,6 +189,7 @@ export class CheckoutComponent implements OnInit {
       let ftDate=this.getDate();
       order.deliveredDate=ftDate;
       order.orderId = this.orderidd;
+      order.status="ordered";
       order.paymentMode = 'Offline';
       order.paymentStatus = 'not_paid';
       console.log("placing order...");
@@ -212,6 +213,7 @@ export class CheckoutComponent implements OnInit {
       const order: Order = new Order();
       order.address = this.selectedAddress;
       let ftDate=this.getDate();
+      order.status="ordered";
       order.deliveredDate=ftDate;
       order.paymentMode = 'online';
       order.paymentStatus = "paid";

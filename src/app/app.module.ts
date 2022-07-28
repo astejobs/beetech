@@ -40,6 +40,7 @@ import { ReadMorePipe } from './shared/pipes/read-more.pipe';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
     PipesModule,
     RouterModule,
     MatDialogModule,
+    MatChipsModule
   ],
   //exports: [ImagePipe],
   providers: [

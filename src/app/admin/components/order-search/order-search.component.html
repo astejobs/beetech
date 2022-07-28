@@ -52,7 +52,13 @@
            <!-- Order Status Column -->
            <ng-container matColumnDef="orderStatus">
             <th mat-header-cell *matHeaderCellDef> Order Status </th>
-            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+
+            <td mat-cell *matCellDef="let element">
+              <mat-chip-list>
+                <mat-chip color="accent" selected> {{element.status}}</mat-chip>
+              </mat-chip-list>
+            </td>
+
           </ng-container>
 
            <!-- Payment Status Column -->

@@ -14,6 +14,10 @@ export class OrderService {
   saveOrder(order: Order){
     return this.apiService.saveOrder(order);
   }
+  updateOrder(order:Order){
+    return this.apiService.updateOrder(order);
+
+  }
 
   pay(request: any){
     return this.apiService.makePayment(request);

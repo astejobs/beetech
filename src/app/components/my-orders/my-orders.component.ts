@@ -72,7 +72,12 @@ export class MyOrdersComponent implements OnInit {
     })
   }
   getOrderForUpdate(order: Order) {
-    console.log(order);
+    console.log("cancel order...",order);
+    order.status="cancelled";
+    this.orderService.updateOrder(order).subscribe(res=>{
+      console.log(res);
+
+    });
 
   }
 
