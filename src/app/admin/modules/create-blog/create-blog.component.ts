@@ -16,8 +16,6 @@ export class CreateBlogComponent implements OnInit {
   constructor(private blogService: BlogService,
               public snackbar: MatSnackBar,
 
-
-
               ) { }
   users: any;
   blogs: any;

@@ -41,6 +41,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { InvoiceComponent } from './components/invoice/invoice.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import {MatChipsModule} from '@angular/material/chips';
     ReadMorePipe,
     DialogComponent,
     MyOrdersComponent,
+    InvoiceComponent,
 
   ],
   imports: [

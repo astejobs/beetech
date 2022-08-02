@@ -1,0 +1,18 @@
+.heading{
+margin-top: 30px;
+}
+.tbl, th,td{
+  border: 2px solid black !important;
+ }
+  .tbl2 td{
+  width: 200px !important;
+ }
+
+@media print {
+  #button{
+     display: none;
+  }
+  input{
+    border:none;
+  }
+}

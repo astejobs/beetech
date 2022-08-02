@@ -36,9 +36,9 @@ export class CheckoutComponent implements OnInit {
   isLoggedIn: boolean;
   hasAddress: boolean = false;
   selectedAddress: Address;
-
+  orderr;
   isEditable = false;
-
+  basketid;
   otpVerificationDone: boolean = true;
   otp: string;
   showOtpComponent = false;
@@ -192,16 +192,20 @@ export class CheckoutComponent implements OnInit {
       order.status="ordered";
       order.paymentMode = 'Offline';
       order.paymentStatus = 'not_paid';
-      console.log("placing order...");
       console.log(order);
       this.subs.push(this.orderService.saveOrder(order)
         .subscribe(res => {
           this.toastr.success('Order placed  Successfully', 'Successfull!', {
             timeOut: 5000,
           });
+          this.orderService.Fullorder.next(order);
+          this.basketid=JSON.parse(localStorage.getItem('basket')).basketItems;
+          this.orderService.basketitems.next(this.basketid);
+          this.orderService.getbasketItem(JSON.parse(localStorage.getItem('basket')).id).subscribe(resp=>console.log("rest...",resp));
           this.clearBasket();
           console.log(res.message);
-          this.router.navigate(['/products']);
+          setTimeout(()=>this.router.navigate(['/invoice']),6000);
+
         }));
 
 
@@ -218,16 +222,18 @@ export class CheckoutComponent implements OnInit {
       order.paymentMode = 'online';
       order.paymentStatus = "paid";
       order.paymentResponse = paymentId;
-      console.log("placing order...");
       console.log(order);
       this.subs.push(this.orderService.saveOrder(order)
         .subscribe(res => {
           this.toastr.success('Order placed  Successfully', 'Successfull!', {
             timeOut: 5000,
           });
+           this.orderService.Fullorder.next(order);
+           this.basketid=JSON.parse(localStorage.getItem('basket')).basketItems;
+           this.orderService.basketitems.next(this.basketid);
           this.clearBasket();
           console.log(res.message);
-          this.router.navigate(['/products']);
+          setTimeout(()=>this.router.navigate(['/invoice']),6000);
 
         }));
 

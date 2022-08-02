@@ -1,0 +1,125 @@
+<div class="container p-5 ">
+  <h4 class="text-center">INVOICE</h4>
+  <hr style="height:2px; width:8%;border-width:0;color:gray;background-color:gray">
+  <br>
+  <div class="row">
+    <div class="col-md-4 ">
+      <table class="table table-bordered tbl2">
+        <tr>
+          <th colspan="2" class="text-center">Payment Details </th>
+        </tr>
+        <tr>
+          <th>Payment Mode</th>
+          <td>{{order.paymentMode}} </td>
+        </tr>
+        <tr>
+          <th>Payment Status</th>
+          <td>{{order.paymentStatus}} </td>
+        </tr>
+        <tr>
+          <th>Order Id</th>
+          <td>{{order.orderId}} </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-6">
+      <h5 class="my-3"><u>Customer Details:</u></h5>
+      <div class="row ">
+
+        <div class="col-md-3">
+          <label for="name" class="font-weight-bold"> Name </label>
+        </div>
+        <div class="col-md-9">
+          <input type="text" id="name" readonly value="{{order.address.name}}" name="name" size="40">
+        </div>
+        <div class="col-md-3">
+          <label for="landmark" class="font-weight-bold">Email</label>
+        </div>
+        <div class="col-md-9">
+          <input type="email" readonly id="lmark" readonly value="{{order.address.appUser.email}}" name="lmark"
+            size="40">
+        </div>
+        <div class="col-md-3">
+          <label for="phone" class="font-weight-bold"> Address</label>
+        </div>
+        <div class="col-md-9">
+          <input type="text" readonly id="address" value="{{order.address.address}}" name="address" size="40">
+        </div>
+        <div class="col-md-3">
+          <label for="phone" class="font-weight-bold"> Phone No</label>
+        </div>
+        <div class="col-md-9">
+          <input type="text" readonly id="phone" name="phone no" value="{{order.address.phoneNumber}}" size="40"
+            maxlength="12">
+        </div>
+        <div class="col-md-3">
+          <label for="pincode" class="font-weight-bold"> Pin code</label>
+        </div>
+        <div class="col-md-9">
+          <input type="text" readonly id="pin" value="{{order.address.pincode}}" name="pincode" size="40" maxlength="8">
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<div class="table p-3">
+  <table class="table table-bordered  tbl">
+    <thead>
+      <tr>
+        <th class="text-center">S No.</th>
+        <th class="text-center">Product Name</th>
+        <th class="text-center"> Product Category</th>
+        <th class="text-center">Quantity</th>
+        <th class="text-center">Price</th>
+        <th class="text-center">Discount(%)</th>
+        <th class="text-center">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ord of basketItems;index as i ">
+        <td>{{i+1}}</td>
+        <td>{{ord.product.name}}</td>
+        <td>{{ord.product.category.name}}</td>
+        <td>{{ord.quantity}}</td>
+        <td>{{ord.product.price}}</td>
+        <td>{{ord.product.discount}}</td>
+        <td>{{ord.product.price*ord.quantity-(ord.product.price*ord.quantity*ord.product.discount/100)| currency:'INR'}}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="6" class="text-center"> <b>Grand Total</b></td>
+        <td><strong class="text-center">{{Gtotal |currency:'INR'}} </strong></td>
+
+        </tr>
+
+    </tbody>
+  </table>
+
+  <div class="row">
+
+
+    <div class="col-md-9">
+      <h4>Terms & Conditions</h4>
+      <ul>
+
+        <li>100% Pure Quality.</li>
+        <li>Fixed Rate.</li>
+        <li>Please check the goods before taking delivery.</li>
+        <!-- <li>Goods once sold will not be taken back.</li> -->
+        <!-- <li>24×7 service.</li> -->
+        <li>Subject to <b>Srinagar </b> Jurisdiction only.</li>
+      </ul>
+      <!-- <div class="col-md-3">
+        <label for="name" class="font-weight-bold float-right mr-4 mt-4"> Signature </label>
+
+      </div> -->
+
+    </div>
+    <div class="col-md-12">
+      <button (click)="printPage($event)" id="button" class="btn btn-primary ml-5 float-right mb-3">Print
+        Invoice</button>
+    </div>

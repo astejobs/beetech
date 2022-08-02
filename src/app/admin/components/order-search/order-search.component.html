@@ -64,7 +64,8 @@
            <!-- Payment Status Column -->
            <ng-container matColumnDef="paymentStatus">
             <th mat-header-cell *matHeaderCellDef> Payment Status </th>
-            <td mat-cell *matCellDef="let element"><button mat-raised-button color="warn"  [ngClass]="{'bg-success':element.paymentStatus =='paid'}" > {{element.paymentStatus}}</button></td>
+            <td mat-cell *matCellDef="let element">
+              <button mat-raised-button color="warn"  [ngClass]="{'bg-success':element.paymentStatus =='paid'}" > {{element.paymentStatus}}</button></td>
           </ng-container>
 
           <ng-container matColumnDef="action">

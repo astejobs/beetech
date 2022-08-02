@@ -206,4 +206,8 @@ export class WebRequestService {
     this.url=this.ROOT_URL+"/basket/basketz/"+id;
     return this.http.get<any>(this.url);
   }
+  getbasketItem(id){
+    this.url=this.ROOT_URL+"/basket/basketItm/"+id;
+    return this.http.get<any>(this.url);
+  }
 }

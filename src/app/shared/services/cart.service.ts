@@ -48,7 +48,6 @@ export class CartService {
     }
   }
   addtoCart(product: Product) {
-
     let local_storage: Basket;
     let tempBasket = new Basket();
     let basketItem = new BasketItem();
@@ -89,6 +88,7 @@ export class CartService {
 
     //IF User Is Logged IN Strore Cart In Database
     if(this.isLoggedIn) {
+      console.log("Basket....",this.basket);
       this.storeCartInDB(this.basket);
     }
   }
@@ -129,6 +129,7 @@ export class CartService {
     return this.apiService.saveBasket(basket)
       .subscribe(basket => {
         this.setProducts(basket);
+        console.log("Bassssss......",basket);
       })
   }
 

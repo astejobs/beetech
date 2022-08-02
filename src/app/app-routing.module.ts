@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LoyoutComponent } from './layout/loyout.component';
 import { BlogComponent } from './blog/blog.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { InvoiceComponent } from './components/invoice/invoice.component';
 
 const routes: Routes = [
   { path: '', component: LoyoutComponent, pathMatch: 'prefix',
@@ -18,6 +19,8 @@ const routes: Routes = [
         { path: 'myorders', component:MyOrdersComponent},
 
       ]},
+      {path:'invoice',component:InvoiceComponent},
+
   { path: "login", component:LoginComponent},
   { path: "register", component: RegisterComponent},
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
