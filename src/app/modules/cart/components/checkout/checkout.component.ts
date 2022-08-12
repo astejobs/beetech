@@ -202,7 +202,7 @@ export class CheckoutComponent implements OnInit {
       this.subs.push(this.orderService.saveOrder(order)
         .subscribe(res => {
           this.toastr.success('Order placed  Successfully', 'Successfull!', {
-            timeOut: 5000,
+            timeOut: 1000,
           });
           this.orderService.Fullorder.next(order);
           this.basketid=JSON.parse(localStorage.getItem('basket')).basketItems;
@@ -210,7 +210,7 @@ export class CheckoutComponent implements OnInit {
           this.orderService.getbasketItem(JSON.parse(localStorage.getItem('basket')).id).subscribe(resp=>console.log("rest...",resp));
           this.clearBasket();
           console.log(res.message);
-          setTimeout(()=>this.router.navigate(['/invoice']),6000);
+          setTimeout(()=>this.router.navigate(['/invoice']),1000);
 
         }));
 
@@ -236,14 +236,14 @@ export class CheckoutComponent implements OnInit {
       this.subs.push(this.orderService.saveOrder(order)
         .subscribe(res => {
           this.toastr.success('Order placed  Successfully', 'Successfull!', {
-            timeOut: 5000,
+            timeOut: 1000,
           });
            this.orderService.Fullorder.next(order);
            this.basketid=JSON.parse(localStorage.getItem('basket')).basketItems;
            this.orderService.basketitems.next(this.basketid);
           this.clearBasket();
           console.log(res.message);
-          setTimeout(()=>this.router.navigate(['/invoice']),6000);
+          setTimeout(()=>this.router.navigate(['/invoice']),1000);
 
         }));
 
