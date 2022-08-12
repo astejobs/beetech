@@ -34,7 +34,7 @@ export class MyOrdersComponent implements OnInit {
   // MatPaginator Output
   pageEvent: PageEvent;
   dataSource: any;
-  orders: any;
+  orders: Order[]=[];
   fetching = false;
   constructor(private orderService: OrderService,
     private toastr: ToastrService,
@@ -68,7 +68,9 @@ export class MyOrdersComponent implements OnInit {
   }
   getAllOrders(id) {
     this.orderService.getOrderss(id).subscribe((res) => {
+      console.log("All orders.......");
       this.orders = res;
+      console.log(this.orders);
       this.fetching = false;
       this.dataSource = new MatTableDataSource(this.orders);
       this.dataSource.paginator = this.paginator;
