@@ -228,6 +228,10 @@ export class CheckoutComponent implements OnInit {
       order.paymentMode = 'online';
       order.paymentStatus = "paid";
       order.paymentResponse = paymentId;
+      this.basket.basketItems.forEach(item => {
+        this.orderedProducts.push(item.product);
+      });
+      order.products = this.orderedProducts;
       console.log(order);
       this.subs.push(this.orderService.saveOrder(order)
         .subscribe(res => {
