@@ -1,9 +1,10 @@
 import { Basket } from "./Basket";
 import { Address } from "./Address";
+import { Product } from "./product";
 
 export class Order {
   id:number;
-  basket:Basket;
+  products:Product[]=[];
   orderId:string;
   orderDate:Date;
   deliveredDate:Date;

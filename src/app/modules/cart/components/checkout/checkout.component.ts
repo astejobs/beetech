@@ -16,6 +16,7 @@ import { Basket } from 'src/app/shared/classes/Basket';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-input-base';
+import { Product } from 'src/app/shared/classes/product';
 
 @Component({
   selector: 'app-checkout',
@@ -42,6 +43,7 @@ export class CheckoutComponent implements OnInit {
   otpVerificationDone: boolean = true;
   otp: string;
   showOtpComponent = false;
+  orderedProducts: Product[]=[];
   @ViewChild('ngOtpInput', { static: false }) ngOtpInput: any;
   @ViewChild('AddressComponent') addressComp: AddressComponent;
   config: Config = {
@@ -192,6 +194,10 @@ export class CheckoutComponent implements OnInit {
       order.status="ordered";
       order.paymentMode = 'Offline';
       order.paymentStatus = 'not_paid';
+      this.basket.basketItems.forEach(item => {
+        this.orderedProducts.push(item.product);
+      });
+      order.products = this.orderedProducts;
       console.log(order);
       this.subs.push(this.orderService.saveOrder(order)
         .subscribe(res => {
