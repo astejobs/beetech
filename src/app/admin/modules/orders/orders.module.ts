@@ -6,12 +6,14 @@ import { MaterialModule } from 'src/app/components/material/material.module';
 import { OrdersRoutingModule } from './orders-routing.module';
 import { OrdersComponent } from './orders.component';
 import { OrderSearchComponent } from '../../components/order-search/order-search.component';
+import { OrderEditComponent } from './order-edit/order-edit.component';
 
 
 @NgModule({
   declarations: [
     OrdersComponent,
-    OrderSearchComponent
+    OrderSearchComponent,
+    OrderEditComponent
   ],
   imports: [
     CommonModule,

@@ -4,9 +4,10 @@ import { Product } from "./product";
 
 export class Order {
   id:number;
+  userId:number;
   products:Product[]=[];
   orderId:string;
-  orderDate:Date;
+  orderedDate:Date;
   deliveredDate:Date;
   address:Address;
   status:string;
@@ -14,4 +15,5 @@ export class Order {
   paymentStatus:string;
   paymentResponse:string;
   remarks:string;
+
 }

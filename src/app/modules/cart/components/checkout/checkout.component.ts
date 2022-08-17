@@ -24,6 +24,8 @@ import { Product } from 'src/app/shared/classes/product';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
+  @ViewChild('ngOtpInput', { static: false }) ngOtpInput: any;
+  @ViewChild('AddressComponent') addressComp: AddressComponent;
   @ViewChild('stepper') private myStepper: MatStepper;
 
   basket: Basket = new Basket();
@@ -37,15 +39,13 @@ export class CheckoutComponent implements OnInit {
   isLoggedIn: boolean;
   hasAddress: boolean = false;
   selectedAddress: Address;
-  orderr;
   isEditable = false;
   basketid;
+  checkOut=false;
   otpVerificationDone: boolean = true;
   otp: string;
   showOtpComponent = false;
   orderedProducts: Product[]=[];
-  @ViewChild('ngOtpInput', { static: false }) ngOtpInput: any;
-  @ViewChild('AddressComponent') addressComp: AddressComponent;
   config: Config = {
     allowNumbersOnly: false,
     length: 5,
@@ -56,6 +56,7 @@ export class CheckoutComponent implements OnInit {
       'width': '50px',
       'height': '50px'
     }
+
   };
 
   constructor(private cartService: CartService,
@@ -153,6 +154,7 @@ export class CheckoutComponent implements OnInit {
   onCheckOut(e) {
     console.log(e);
 
+    this.checkOut=true;
     this.router.navigate(['/cart/checkout']);
   }
 
@@ -198,9 +200,11 @@ export class CheckoutComponent implements OnInit {
         this.orderedProducts.push(item.product);
       });
       order.products = this.orderedProducts;
-      console.log(order);
+      // console.log(order);
       this.subs.push(this.orderService.saveOrder(order)
         .subscribe(res => {
+          console.log("responseeeee....",res);
+
           this.toastr.success('Order placed  Successfully', 'Successfull!', {
             timeOut: 1000,
           });
@@ -235,6 +239,8 @@ export class CheckoutComponent implements OnInit {
       console.log(order);
       this.subs.push(this.orderService.saveOrder(order)
         .subscribe(res => {
+          console.log("responseeeee....",res);
+
           this.toastr.success('Order placed  Successfully', 'Successfull!', {
             timeOut: 1000,
           });

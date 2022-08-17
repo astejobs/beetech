@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>Update Order Form</h2>
+<div mat-dialog-content>
+   <form [formGroup]="OrderForm">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Ordered Date</mat-label>
+          <input formControlName="OrderedDate" matInput placeholder="Placeholder"  readonly>
+          </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>DeliveryDate</mat-label>
+          <input formControlName="DeliveryDate" matInput placeholder="Placeholder" >
+          </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" >
+          <mat-label>Order Status</mat-label>
+          <mat-select  formControlName="OrderStatus"placeholder="OrderStatus" >
+              <mat-option *ngFor="let order of orderStatus"  value="{{order}}">{{order}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+
+        <mat-form-field appearance="outline" >
+          <mat-label>Payment Status</mat-label>
+          <mat-select  formControlName="PaymentStatus" placeholder="PaymentStatus" >
+              <mat-option *ngFor="let pStatus of paymentStatus"  value="{{pStatus}}">{{pStatus}}</mat-option>
+          </mat-select>
+       </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input formControlName="Address" matInput placeholder="Address" readonly>
+          </mat-form-field>
+      </div>
+    </div>
+
+
+
+
+
+
+
+   </form>
+</div>
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close (click)="closeDialog()" class="mx-3"  >Close</button>
+    <button mat-raised-button color="primary" (click)="editOrder()" >Update Order</button>
+</div>

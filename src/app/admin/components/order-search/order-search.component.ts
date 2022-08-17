@@ -16,6 +16,7 @@ import { CategoryService } from 'src/app/shared/services/category.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { AddEditComponent } from '../category/add-edit.component';
 import { PageModel } from 'src/app/shared/classes/page-model';
+import { OrderEditComponent } from '../../modules/orders/order-edit/order-edit.component';
 
 @Component({
   selector: 'app-order-search',
@@ -109,6 +110,10 @@ export class OrderSearchComponent implements OnInit, OnDestroy {
 
   getOrderForUpdate(order: Order) {
     console.log(order);
+    this.orderService.EditOrder.next(order);
+    this.dialog.open(OrderEditComponent,{
+
+    });
 
   }
 

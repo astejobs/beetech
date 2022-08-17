@@ -88,7 +88,7 @@
             </span>
           </div>
           <div class="form-group">
-            <button mat-raised-button color="warn" class="btn-block" (click)="onCheckOut($event)">
+            <button [disabled]="checkOut" mat-raised-button color="warn" class="btn-block" (click)="onCheckOut($event)">
               <mat-icon>shopping_cart_checkout</mat-icon>
               Checkout
             </button>

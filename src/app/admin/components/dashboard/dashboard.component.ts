@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OrderService } from 'src/app/shared/services/order.service';
 
 @Component({
@@ -13,10 +14,12 @@ export class DashboardComponent implements OnInit {
   paidOrders: number = 0;
   cancelledOrders: number = 0;
   codOrders: number = 0;
+  InTransitOrders:number=0;
   DelOrders;
 
 
-  constructor(private OrderService: OrderService) { }
+  constructor(private OrderService: OrderService,
+              private router:Router ) { }
 
   ngOnInit(): void {
     this.OrderService.getorders().subscribe(response => {
@@ -35,6 +38,9 @@ export class DashboardComponent implements OnInit {
       this.cancelledOrders = this.orders.filter(function (el) {
         return el.status == "cancelled" || el.status == "Cancelled";
       }).length;
+      this.InTransitOrders = this.orders.filter(function (el) {
+        return el.status == "In-Transit" || el.status == "in-transit ";
+      }).length;
     })
   }
   getPaidOrders(e:any) {
@@ -47,6 +53,7 @@ export class DashboardComponent implements OnInit {
         return el.status == "delivered" || el.status == "Delivered";
       })
       console.log(this.DelOrders);
+
     }
     else if (e.target.parentNode.firstChild.innerText == "Cancelled Orders") {
       this.DelOrders = this.orders.filter(function (el) {
@@ -65,6 +72,14 @@ export class DashboardComponent implements OnInit {
         return el.paymentStatus == "not_paid" || el.status == "Not_Paid";
       })
       console.log(this.DelOrders);
+
     }
+    else if (e.target.parentNode.firstChild.innerText == "In-Transit Orders") {
+      this.DelOrders = this.orders.filter(function (el) {
+        return el.status == "In-Transit" || el.status == "in-transit";
+      })
+      console.log(this.DelOrders);
+    }
+    this.router.navigate(["/admin/orders"]);
   }
 }

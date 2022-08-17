@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 export class OrderService {
  Fullorder = new BehaviorSubject<any>('');
  basketitems= new BehaviorSubject<any>('');
+ EditOrder=new BehaviorSubject<any>('');
 
   constructor(private apiService: WebRequestService) { }
 
@@ -17,6 +18,7 @@ export class OrderService {
     return this.apiService.saveOrder(order);
   }
   updateOrder(order:Order){
+    console.log("Order in service",order);
     return this.apiService.updateOrder(order);
 
   }

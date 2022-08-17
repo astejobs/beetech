@@ -19,8 +19,8 @@ const routes: Routes = [
         { path: 'myorders', component:MyOrdersComponent},
 
       ]},
-      {path:'invoice',component:InvoiceComponent},
 
+  {path:'invoice',component:InvoiceComponent},
   { path: "login", component:LoginComponent},
   { path: "register", component: RegisterComponent},
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },

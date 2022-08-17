@@ -68,7 +68,7 @@ export class MyOrdersComponent implements OnInit {
   }
   getAllOrders(id) {
     this.orderService.getOrderss(id).subscribe((res) => {
-      console.log("All orders.......");
+      // console.log("All orders.......");
       this.orders = res;
       console.log(this.orders);
       this.fetching = false;
