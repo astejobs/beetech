@@ -7,8 +7,14 @@ margin-top: 30px;
   .tbl2 td{
   width: 200px !important;
  }
+ .GoBack{
+  cursor: pointer;
+ }
 
 @media print {
+  .GoBack{
+    display: none;
+  }
   #button{
      display: none;
   }

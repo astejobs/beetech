@@ -25,6 +25,9 @@ export class InvoiceComponent implements OnInit {
     console.log(this.basketItems);
 
   }
+  goBack(){
+    this.router.navigate(['/products']);
+  }
   ngOnInit(): void {
     for(let ord of this.basketItems){
     let total=(ord.product.price*ord.quantity-(ord.product.price*ord.quantity*ord.product.discount/100));
