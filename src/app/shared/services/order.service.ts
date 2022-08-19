@@ -15,6 +15,7 @@ export class OrderService {
   constructor(private apiService: WebRequestService) { }
 
   saveOrder(order: Order){
+    console.log("In save Order Service.....",order);
     return this.apiService.saveOrder(order);
   }
   updateOrder(order:Order){

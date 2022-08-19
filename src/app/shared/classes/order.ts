@@ -1,12 +1,13 @@
 import { Basket } from "./Basket";
 import { Address } from "./Address";
 import { Product } from "./product";
+import { OdrProduct } from "./odr-product"
 
 export class Order {
   id:number;
   userId:number;
-  products:Product[]=[];
   orderId:string;
+  odrProduct:OdrProduct[]=[];
   orderedDate:Date;
   deliveredDate:Date;
   address:Address;

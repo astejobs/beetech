@@ -17,6 +17,10 @@ import { CartService } from 'src/app/shared/services/cart.service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { dateInputsHaveChanged } from '@angular/material/datepicker/datepicker-input-base';
 import { Product } from 'src/app/shared/classes/product';
+import { OdrProduct } from 'src/app/shared/classes/odr-product';
+import { map} from 'rxjs/operators';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-checkout',
@@ -45,7 +49,7 @@ export class CheckoutComponent implements OnInit {
   otpVerificationDone: boolean = true;
   otp: string;
   showOtpComponent = false;
-  orderedProducts: Product[]=[];
+  orderedProducts:OdrProduct[]=[];
   config: Config = {
     allowNumbersOnly: false,
     length: 5,
@@ -196,11 +200,14 @@ export class CheckoutComponent implements OnInit {
       order.status="ordered";
       order.paymentMode = 'Offline';
       order.paymentStatus = 'not_paid';
-      this.basket.basketItems.forEach(item => {
-        this.orderedProducts.push(item.product);
+      this.basket.basketItems.forEach((item:any) => {
+         const orderProduct = new OdrProduct();
+         orderProduct.product=item.product;
+         orderProduct.quantity=item.quantity;
+       this.orderedProducts.push(orderProduct);
       });
-      order.products = this.orderedProducts;
-      // console.log(order);
+      order.odrProduct=this.orderedProducts;
+      console.log("orderedproducts...",this.orderedProducts);
       this.subs.push(this.orderService.saveOrder(order)
         .subscribe(res => {
           console.log("responseeeee....",res);
@@ -232,10 +239,13 @@ export class CheckoutComponent implements OnInit {
       order.paymentMode = 'online';
       order.paymentStatus = "paid";
       order.paymentResponse = paymentId;
-      this.basket.basketItems.forEach(item => {
-        this.orderedProducts.push(item.product);
-      });
-      order.products = this.orderedProducts;
+      this.basket.basketItems.forEach((item:any) => {
+        const orderProduct = new OdrProduct();
+        orderProduct.product=item.product;
+        orderProduct.quantity=item.quantity;
+      this.orderedProducts.push(orderProduct);
+     });
+     order.odrProduct=this.orderedProducts;
       console.log(order);
       this.subs.push(this.orderService.saveOrder(order)
         .subscribe(res => {

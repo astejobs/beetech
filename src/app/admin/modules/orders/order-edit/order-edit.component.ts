@@ -57,7 +57,7 @@ export class OrderEditComponent implements OnInit {
     order.id=this.Order.id;
     order.userId=this.Order.user.id;
     order.orderId=this.Order.orderId;
-    order.products=this.Order.products;
+    // order.products=this.Order.products;
     order.paymentMode=this.Order.paymentMode;
     order.paymentStatus=this.OrderForm.controls['PaymentStatus'].value;
     order.status=this.OrderForm.controls['OrderStatus'].value;

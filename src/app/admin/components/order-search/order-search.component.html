@@ -43,11 +43,32 @@
             <th mat-header-cell *matHeaderCellDef> Items </th>
             <td mat-cell *matCellDef="let element">
               <ul>
-                <li *ngFor="let item of element.products">{{item.name}}</li>
+                <li *ngFor="let item of element.odrProduct">{{item.product.name}}</li>
               </ul>
              <!--  {{element.basket.basket}}  -->
             </td>
           </ng-container>
+          <!-- Quantity Column -->
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef> Quantity </th>
+            <td mat-cell *matCellDef="let element">
+              <ul>
+                <li *ngFor="let item of element.odrProduct">{{item.quantity}}</li>
+              </ul>
+             <!--  {{element.basket.basket}}  -->
+            </td>
+          </ng-container>
+           <!-- TotalPrice Column -->
+           <ng-container matColumnDef="totalPrice">
+            <th mat-header-cell *matHeaderCellDef> TotalPrice </th>
+            <td mat-cell *matCellDef="let element">
+              <ul>
+                <li *ngFor="let item of element.odrProduct">{{item.totalPrice}}</li>
+              </ul>
+             <!--  {{element.basket.basket}}  -->
+            </td>
+          </ng-container>
+
 
            <!-- Order Status Column -->
            <ng-container matColumnDef="orderStatus">

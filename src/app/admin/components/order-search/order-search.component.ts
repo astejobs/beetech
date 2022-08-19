@@ -46,7 +46,7 @@ export class OrderSearchComponent implements OnInit, OnDestroy {
   orders: Order[]=[];
   orderSearch: OrderSearch = new OrderSearch();
   currentOrder= new Order;
-  displayedColumns: string[] = ['id', 'orderedDate', 'deliveredDate', 'orderStatus', 'paymentStatus', 'address', 'items', 'action'];
+  displayedColumns: string[] = ['id', 'orderedDate', 'deliveredDate', 'orderStatus', 'paymentStatus', 'address', 'items','quantity','totalPrice', 'action'];
   dataSource = new MatTableDataSource();
   subs: Subscription[] = [];
   constructor(private formBuilder: FormBuilder,
@@ -62,18 +62,19 @@ export class OrderSearchComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const ordersearch = new OrderSearch();
-    this.getOrders(ordersearch);
+    // this.getOrders(ordersearch);
     this.getAllOrders();
 
   }
   getAllOrders(){
-  this.orderService.getorders().subscribe((res)=>{
+  this.subs.push(this.orderService.getorders().subscribe(res=>{
     this.orders = res;
     this.dataSource=new MatTableDataSource(this.orders);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    console.log(this.orders);
-  })
+     console.log(this.orders);
+  }
+  ))
 }
   // convenience getter for easy access to form fields
    get f() { return this.orderSearchForm.controls; }
@@ -84,20 +85,20 @@ export class OrderSearchComponent implements OnInit, OnDestroy {
     //this.dataSource.sort = this.sort;
   }
 
-  getOrders(orderSearch: OrderSearch) {
+  // getOrders(orderSearch: OrderSearch) {
 
-    this.subs.push(this.orderService.getOrders(orderSearch).subscribe(
-      res => {
-        this.orders = res.orders;
-        this.totalRecords = res.totalRecords;
-        this.currentPage = res.currentPage-1;
-        this.orderSearch = res.orderSearch;
-        this.dataSource = new MatTableDataSource(this.orders);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      }
-    ))
-  }
+  //   this.subs.push(this.orderService.getOrders(orderSearch).subscribe(
+  //     res => {
+  //       this.orders = res.orders;
+  //       this.totalRecords = res.totalRecords;
+  //       this.currentPage = res.currentPage-1;
+  //       this.orderSearch = res.orderSearch;
+  //       this.dataSource = new MatTableDataSource(this.orders);
+  //       this.dataSource.paginator = this.paginator;
+  //       this.dataSource.sort = this.sort;
+  //     }
+  //   ))
+  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

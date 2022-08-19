@@ -29,7 +29,7 @@ export class MyOrdersComponent implements OnInit {
   pageSize = 5;
   currentPage = 0;
   pageSizeOptions: number[] = [5, 10, 25];
-  displayedColumns: string[] = ['id', 'orderedDate', 'deliveredDate', 'orderStatus', 'paymentStatus', 'address', 'items', 'action'];
+  displayedColumns: string[] = ['id', 'orderedDate', 'deliveredDate', 'orderStatus', 'paymentStatus', 'address', 'items','quantity','action'];
 
   // MatPaginator Output
   pageEvent: PageEvent;
