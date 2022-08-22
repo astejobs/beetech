@@ -17,10 +17,10 @@
 <div *ngIf="isCOD">
   <p class="lead">Cash On Delivery Selected</p>
 </div>
-<div class="container-fluid" *ngIf="switch">
+  <div class="form-group" *ngIf="switch">
   <button type="submit" class="btn btn-success btn-block col-lg-3 mt-3 float-right " (click)="pay()">
     <mat-icon>shopping_cart_checkout</mat-icon>
-    {{isPayOnline?"Make Payment Online":"Place Order"}}
+    {{isPayOnline?" Pay Online":"Place Order"}}
   </button>
 
 
