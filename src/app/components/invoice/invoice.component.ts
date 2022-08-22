@@ -9,27 +9,20 @@ import { OrderService } from 'src/app/shared/services/order.service';
 })
 export class InvoiceComponent implements OnInit {
   order;
-  basketItems;
   total:any=[];
   Gtotal=0;
 
   constructor(private orderService: OrderService ,private router:Router) {
     this.orderService.Fullorder.subscribe(res => {
       this.order = res;
-      this.orderService.basketitems.subscribe(result => {
-        this.basketItems = result;
-      })
     });
     console.log(this.order);
-    console.log(this.order.orderId);
-    console.log(this.basketItems);
-
   }
   goBack(){
     this.router.navigate(['/products']);
   }
   ngOnInit(): void {
-    for(let ord of this.basketItems){
+    for(let ord of this.order.odrProduct){
     let total=(ord.product.price*ord.quantity-(ord.product.price*ord.quantity*ord.product.discount/100));
     this.total.push(total);
   }

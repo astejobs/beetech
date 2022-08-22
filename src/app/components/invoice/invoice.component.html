@@ -48,6 +48,12 @@
           <input type="text" readonly id="address" value="{{order.address.address}}" name="address" size="40">
         </div>
         <div class="col-md-3">
+          <label for="phone" class="font-weight-bold"> Landmark</label>
+        </div>
+        <div class="col-md-9">
+          <input type="text" readonly id="address" value="{{order.address.landmark}}" name="address" size="40">
+        </div>
+        <div class="col-md-3">
           <label for="phone" class="font-weight-bold"> Phone No</label>
         </div>
         <div class="col-md-9">
@@ -81,7 +87,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let ord of basketItems;index as i ">
+      <tr *ngFor="let ord of order.odrProduct ;index as i ">
         <td>{{i+1}}</td>
         <td>{{ord.product.name}}</td>
         <td>{{ord.product.category.name}}</td>
