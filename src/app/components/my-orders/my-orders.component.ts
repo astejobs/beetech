@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { AddEditComponent } from 'src/app/admin/components/category/add-edit.component';
+import { OdrProduct } from 'src/app/shared/classes/odr-product';
 import { Order } from 'src/app/shared/classes/order';
 import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { OrderService } from 'src/app/shared/services/order.service';
@@ -86,7 +87,7 @@ export class MyOrdersComponent implements OnInit {
     this.dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // do confirmation actions
-        order.status="cancelled"
+        order.status="cancelled";
         this.orderService.updateOrder(order).subscribe(res => {
           console.log(res);
 

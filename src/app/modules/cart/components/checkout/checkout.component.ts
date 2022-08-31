@@ -44,7 +44,6 @@ export class CheckoutComponent implements OnInit {
   hasAddress: boolean = false;
   selectedAddress: Address;
   isEditable = false;
-  basketid;
   checkOut=false;
   otpVerificationDone: boolean = true;
   otp: string;
